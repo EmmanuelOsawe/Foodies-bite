@@ -1,3 +1,36 @@
+.opening-book {
+  background: #071a2b;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.custom-input {
+  width: 100%;
+  background: #10263d !important;
+  border: 1px solid #1f3b57 !important;
+  color: white !important;
+  padding: 14px;
+  margin-bottom: 20px;
+}
+
+.custom-input::placeholder {
+  color: #cfcfcf;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #d4a762 !important;
+  box-shadow: none;
+}
+
+.opening-book p,
+.opening-book h4 {
+  color: white;
+}
+
+
+
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;

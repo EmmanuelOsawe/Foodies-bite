@@ -234,58 +234,85 @@ function Home() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-5 col-md-12">
-                                    <div className="opening-book" data-aos-duration={1000} data-aos="fade-left">
-                                        <form>
-                                            <h4 className="heading">book a table</h4>
-                                            <p>After booking we will call the customer to confirm, so please enter your name and
-                                                phone number is required, thank you!
-                                            </p>
-                                            <div className="form-group">
-                                                <input type="text" className="form-control" id="inputname4" placeholder="Name*" />
-                                            </div>
-                                            <div className="form-row">
-                                                <div className="form-group col-md-6">
-                                                    <input type="text" className="form-control" id="inputPhone" placeholder="Phone*" />
-                                                </div>
-                                                <div className="form-group col-md-6">
-                                                    <select id="inputState" className="form-control">
-                                                        <option selected>Arrival time
-                                                        </option>
-                                                        <option selected>Arrival time
-                                                        </option>
-                                                        <option selected>Arrival time
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div className="form-row">
-                                                <div className="form-group col-md-6">
-                                                    <select id="inputState" className="form-control">
-                                                        <option selected>Amount of people
-                                                        </option>
-                                                        <option selected>Amount of people
-                                                        </option>
-                                                        <option selected>Amount of people
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div className="form-group col-md-6">
-                                                    <select id="inputState" className="form-control">
-                                                        <option selected>18/6/2023
-                                                        </option>
-                                                        <option selected>18/6/2023
-                                                        </option>
-                                                        <option selected>18/6/2023
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <a type="submit" className="tf-button style3">book a table</a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+<div className="col-lg-5 col-md-12">
+  <div className="opening-book">
+
+    <form>
+
+      <h4 className="heading">book a table</h4>
+
+      <p>
+        After booking we will call the customer to confirm,
+        so please enter your name and phone number.
+      </p>
+
+      {/* NAME */}
+      <div className="form-group">
+        <input
+          type="text"
+          className="form-control custom-input"
+          placeholder="Name*"
+        />
+      </div>
+
+      {/* ROW 1 */}
+      <div className="form-row">
+
+        <div className="form-group col-md-6">
+          <input
+            type="text"
+            className="form-control custom-input"
+            placeholder="Phone*"
+          />
+        </div>
+
+        <div className="form-group col-md-6">
+          <select
+            className="form-control custom-input"
+          >
+            <option>Arrival time</option>
+            <option>10:00 AM</option>
+            <option>12:00 PM</option>
+            <option>6:00 PM</option>
+          </select>
+        </div>
+
+      </div>
+
+      {/* ROW 2 */}
+      <div className="form-row">
+
+        <div className="form-group col-md-6">
+          <select
+            className="form-control custom-input"
+          >
+            <option>Amount of people</option>
+            <option>1 Person</option>
+            <option>2 People</option>
+            <option>5 People</option>
+          </select>
+        </div>
+
+        <div className="form-group col-md-6">
+          <input
+            type="date"
+            className="form-control custom-input"
+          />
+        </div>
+
+      </div>
+
+      <button
+        type="submit"
+        className="tf-button style3"
+      >
+        book a table
+      </button>
+
+    </form>
+
+  </div>
+</div>                            </div>
                         </div>
                     </section>
                     <section className="chef-restaurant">
