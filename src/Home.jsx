@@ -74,7 +74,7 @@ function Home() {
                                                 <li className="menu-item"><a href="/About">About</a></li>
                                                 <li className="menu-item"><a href="careers.html">Careers</a></li>
                                                 <li className="menu-item"><a href="coming_soon.html">Coming Soon</a></li>
-                                                <li className="menu-item"><a href="faq.html">Faqs</a></li>
+                                                <li className="menu-item"><a href="/Faqs">Faqs</a></li>
                                                 <li className="menu-item"><a href="gallery.html">Gallery</a></li>
                                                 <li className="menu-item"><a href="history.html">History</a></li>
                                                 <li className="menu-item"><a href="location.html">Location</a></li>
