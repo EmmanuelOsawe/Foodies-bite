@@ -2,7 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home"
 import About from "./About"
 import Faqs from "./Faqs"
-import Gallery from "./Gallery";
+import Gallery from "./Gallery"
+import Menu from "./Menu"
+import Contact from "./Contact";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Faqs" element={<Faqs />} />
         <Route path="/Gallery" element={<Gallery />} />
+        <Route path="/Menu" element={<Menu />} />
+        <Route path="/Contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );

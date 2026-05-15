@@ -85,7 +85,7 @@ function Home() {
                                         <li className="menu-item menu-item-has-children">
                                             <a href="home_02.html#">Menu</a>
                                             <ul className="sub-menu">
-                                                <li className="menu-item"><a href="menu_list.html">Menu List</a></li>
+                                                <li className="menu-item"><a href="/Menu">Menu List</a></li>
                                                 <li className="menu-item"><a href="menu_zigzag.html">Menu Zingzag</a></li>
                                             </ul>
                                         </li>
@@ -113,7 +113,7 @@ function Home() {
                                         <li className="menu-item menu-item-has-children">
                                             <a href="home_02.html#">Contact</a>
                                             <ul className="sub-menu">
-                                                <li className="menu-item"><a href="contact_01.html">Contact 01</a></li>
+                                                <li className="menu-item"><a href="/Contact">Contact 01</a></li>
                                                 <li className="menu-item"><a href="contact_02.html">Contact 02</a></li>
                                             </ul>
                                         </li>
