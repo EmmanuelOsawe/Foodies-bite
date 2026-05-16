@@ -192,6 +192,18 @@ function Menu() {
                 {authLoading ? 'Please wait...' : authTab === 'login' ? 'Sign In' : 'Create Account'}
               </button>
             </form>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '1.25rem 0' }}>
+              <div style={{ flex: 1, height: 1, background: '#eee' }} />
+              <span style={{ color: '#888', fontSize: '0.85rem', fontWeight: 500 }}>or</span>
+              <div style={{ flex: 1, height: 1, background: '#eee' }} />
+            </div>
+            <a href="http://localhost:5000/api/auth/google"
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, width: '100%', padding: '11px', border: '1.5px solid #ddd', borderRadius: 8, textDecoration: 'none', color: '#3B1F0A', fontWeight: 600, fontSize: '0.9rem', background: 'white', cursor: 'pointer', transition: 'border-color 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.borderColor = '#D47C2F'}
+              onMouseLeave={e => e.currentTarget.style.borderColor = '#ddd'}>
+              <img src="https://www.google.com/favicon.ico" alt="Google" style={{ width: 18, height: 18 }} />
+              Continue with Google
+            </a>
           </div>
         </div>
       )}
