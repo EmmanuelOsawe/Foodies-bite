@@ -78,7 +78,7 @@ function Home() {
                                                 <li className="menu-item"><a href="/Gallery">Gallery</a></li>
                                                 <li className="menu-item"><a href="history.html">History</a></li>
                                                 <li className="menu-item"><a href="location.html">Location</a></li>
-                                                <li className="menu-item"><a href="gift_vouchers.html">Gift Vouchers</a></li>
+                                                <li className="menu-item"><a href="/admin/">Admin</a></li>
                                                 <li className="menu-item"><a href="gift_vouchers_detail.html">Gift Detail</a></li>
                                             </ul>
                                         </li>

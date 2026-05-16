@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import './App.css';
 import {
   getFoods,
@@ -11,7 +12,10 @@ import {
   clearAuth,
   loginUser,
   registerUser,
+  api,
 } from './api';
+
+const GOOGLE_CLIENT_ID = "your_google_client_id_here"; // ← paste your Google Client ID
 
 const CATEGORIES = ['all', 'breakfast', 'lunch', 'dinner', 'drinks', 'desserts', 'snacks', 'sides'];
 
@@ -146,6 +150,18 @@ function Menu() {
     showToast('Signed out');
   };
 
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const data = await api(`/auth/google?token=${credentialResponse.credential}`);
+      saveAuth(data.token, data.user);
+      setUser(data.user);
+      setAuthOpen(false);
+      showToast(`Welcome, ${data.user.name.split(' ')[0]}!`);
+    } catch (err) {
+      showToast(err.message, 'error');
+    }
+  };
+
   return (
     <div>
       {toast && (
@@ -155,6 +171,7 @@ function Menu() {
       )}
 
       {authOpen && (
+        <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
         <div onClick={(e) => e.target === e.currentTarget && setAuthOpen(false)}
           style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
           <div style={{ background: 'white', borderRadius: '16px', padding: '2rem', width: 'min(420px,100%)', maxHeight: '90vh', overflowY: 'auto' }}>
@@ -197,15 +214,18 @@ function Menu() {
               <span style={{ color: '#888', fontSize: '0.85rem', fontWeight: 500 }}>or</span>
               <div style={{ flex: 1, height: 1, background: '#eee' }} />
             </div>
-            <a href="http://localhost:5000/api/auth/google"
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, width: '100%', padding: '11px', border: '1.5px solid #ddd', borderRadius: 8, textDecoration: 'none', color: '#3B1F0A', fontWeight: 600, fontSize: '0.9rem', background: 'white', cursor: 'pointer', transition: 'border-color 0.2s' }}
-              onMouseEnter={e => e.currentTarget.style.borderColor = '#D47C2F'}
-              onMouseLeave={e => e.currentTarget.style.borderColor = '#ddd'}>
-              <img src="https://www.google.com/favicon.ico" alt="Google" style={{ width: 18, height: 18 }} />
-              Continue with Google
-            </a>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <GoogleLogin
+                onSuccess={handleGoogleSuccess}
+                onError={() => showToast('Google sign-in failed', 'error')}
+                text={authTab === 'login' ? 'signin_with' : 'signup_with'}
+                shape="rectangular"
+                width="360"
+              />
+            </div>
           </div>
         </div>
+        </GoogleOAuthProvider>
       )}
 
       {cartOpen && (
