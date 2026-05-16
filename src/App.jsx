@@ -7,6 +7,7 @@ import Faqs from "./Faqs";
 import Gallery from "./Gallery";
 import Menu from "./Menu";
 import Contact from "./Contact";
+import Admin from "./Admin";
 import { connectSocket, registerPushNotifications } from "./lib/notifications";
 
 const PaymentSuccess = () => (
@@ -54,6 +55,7 @@ function App() {
         <Route path="/Gallery" element={<Gallery />} />
         <Route path="/Menu" element={<Menu />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/payment/success" element={<PaymentSuccess />} />
         <Route path="/payment/failed" element={<PaymentFailed />} />
       </Routes>
