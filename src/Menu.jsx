@@ -173,17 +173,20 @@ function Menu() {
             <form onSubmit={handleAuth}>
               {authTab === 'register' && (
                 <div style={{ marginBottom: '1rem' }}>
-                  <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem' }}>Full Name</label>
-                  <input className="form-control" value={authForm.name} onChange={e => setAuthForm(p => ({ ...p, name: e.target.value }))} placeholder="John Doe" required />
+                  <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Full Name</label>
+                  <input className="form-control" value={authForm.name} onChange={e => setAuthForm(p => ({ ...p, name: e.target.value }))} placeholder="John Doe" required
+                    style={{ color: '#000', background: '#fff', border: '1.5px solid #ddd', borderRadius: 8, padding: '10px 14px', width: '100%', fontSize: '0.95rem' }} />
                 </div>
               )}
               <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem' }}>Email</label>
-                <input className="form-control" type="email" value={authForm.email} onChange={e => setAuthForm(p => ({ ...p, email: e.target.value }))} placeholder="john@example.com" required />
+                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Email</label>
+                <input className="form-control" type="email" value={authForm.email} onChange={e => setAuthForm(p => ({ ...p, email: e.target.value }))} placeholder="john@example.com" required
+                  style={{ color: '#000', background: '#fff', border: '1.5px solid #ddd', borderRadius: 8, padding: '10px 14px', width: '100%', fontSize: '0.95rem' }} />
               </div>
               <div style={{ marginBottom: '1.25rem' }}>
-                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem' }}>Password</label>
-                <input className="form-control" type="password" value={authForm.password} onChange={e => setAuthForm(p => ({ ...p, password: e.target.value }))} placeholder="••••••••" required />
+                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Password</label>
+                <input className="form-control" type="password" value={authForm.password} onChange={e => setAuthForm(p => ({ ...p, password: e.target.value }))} placeholder="••••••••" required
+                  style={{ color: '#000', background: '#fff', border: '1.5px solid #ddd', borderRadius: 8, padding: '10px 14px', width: '100%', fontSize: '0.95rem' }} />
               </div>
               <button type="submit" className="tf-button style3" disabled={authLoading} style={{ width: '100%', textAlign: 'center', opacity: authLoading ? 0.6 : 1 }}>
                 {authLoading ? 'Please wait...' : authTab === 'login' ? 'Sign In' : 'Create Account'}
@@ -312,11 +315,11 @@ function Menu() {
                 </button>
                 {user ? (
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>{user.name.split(' ')[0]}</span>
-                    <button onClick={handleLogout} style={{ background: 'none', border: '1px solid #ddd', borderRadius: 50, padding: '6px 14px', cursor: 'pointer', fontSize: '0.8rem' }}>Sign Out</button>
+                    <span style={{ fontWeight: 600, fontSize: '0.9rem', color: '#3B1F0A' }}>{user.name.split(' ')[0]}</span>
+                    <button onClick={handleLogout} style={{ background: 'none', border: '1px solid #ddd', borderRadius: 50, padding: '6px 14px', cursor: 'pointer', fontSize: '0.8rem', color: '#3B1F0A' }}>Sign Out</button>
                   </div>
                 ) : (
-                  <button onClick={() => setAuthOpen(true)} style={{ background: 'none', border: '2px solid #3B1F0A', borderRadius: 50, padding: '7px 18px', fontWeight: 700, cursor: 'pointer', fontSize: '0.85rem' }}>Sign In</button>
+                  <button onClick={() => setAuthOpen(true)} style={{ background: 'none', border: '2px solid #3B1F0A', borderRadius: 50, padding: '7px 18px', fontWeight: 700, cursor: 'pointer', fontSize: '0.85rem', color: '#3B1F0A' }}>Sign In</button>
                 )}
               </div>
               <div className="mobile-button"><span /></div>
@@ -426,10 +429,12 @@ function Menu() {
                       </div>
                       <div className="form-row">
                         <div className="form-group col-md-6">
-                          <input type="time" className="form-control" value={resTime} onChange={e => setResTime(e.target.value)} required />
+                          <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: 4, color: '#555' }}>Preferred Time</label>
+                          <input type="time" className="form-control" value={resTime} onChange={e => setResTime(e.target.value)} required style={{ color: '#000', background: '#fff' }} />
                         </div>
                         <div className="form-group col-md-6">
-                          <select className="form-control" value={resGuests} onChange={e => setResGuests(e.target.value)}>
+                          <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: 4, color: '#555' }}>Number of Guests</label>
+                          <select className="form-control" value={resGuests} onChange={e => setResGuests(e.target.value)} style={{ color: '#000', background: '#fff' }}>
                             {[1,2,3,4,5,6,7,8,9,10].map(n => (
                               <option key={n} value={n}>{n} Guest{n > 1 ? 's' : ''}</option>
                             ))}
