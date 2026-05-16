@@ -33,7 +33,22 @@ function Contact() {
   };
 
   useEffect(() => {
-    fetchReviews();
+    let mounted = true;
+
+    const load = async () => {
+      try {
+        const data = await getRestaurantReviews();
+        if (mounted) {
+          setReviews(data.reviews || []);
+          setAvgRating(data.averageRating || 0);
+        }
+      } catch (err) {
+        console.error('Failed to load reviews:', err.message);
+      }
+    };
+
+    load();
+    return () => { mounted = false; };
   }, []); // runs once on mount — no dependencies needed
 
   const handleContact = (e) => {
