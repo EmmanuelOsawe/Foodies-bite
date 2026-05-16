@@ -245,9 +245,11 @@ function Menu() {
                       <div style={{ fontWeight: 600, fontSize: '0.9rem' }}>{item.name}</div>
                       <div style={{ color: '#D47C2F', fontWeight: 600, fontSize: '0.85rem' }}>{formatPrice(item.price)}</div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 6 }}>
-                        <button onClick={() => updateQty(item._id, item.qty - 1)} style={{ width: 24, height: 24, borderRadius: '50%', border: '1px solid #ddd', background: 'white', cursor: 'pointer', fontWeight: 700 }}>−</button>
-                        <span style={{ fontWeight: 600, minWidth: 20, textAlign: 'center' }}>{item.qty}</span>
-                        <button onClick={() => updateQty(item._id, item.qty + 1)} style={{ width: 24, height: 24, borderRadius: '50%', border: '1px solid #ddd', background: 'white', cursor: 'pointer', fontWeight: 700 }}>+</button>
+                        <button onClick={() => updateQty(item._id, item.qty - 1)}
+                          style={{ width: 28, height: 28, borderRadius: '50%', border: '2px solid #D47C2F', background: 'white', cursor: 'pointer', fontWeight: 900, fontSize: '1.1rem', color: '#D47C2F', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}>−</button>
+                        <span style={{ fontWeight: 700, minWidth: 20, textAlign: 'center', color: '#000', fontSize: '0.95rem' }}>{item.qty}</span>
+                        <button onClick={() => updateQty(item._id, item.qty + 1)}
+                          style={{ width: 28, height: 28, borderRadius: '50%', border: '2px solid #D47C2F', background: '#D47C2F', cursor: 'pointer', fontWeight: 900, fontSize: '1.1rem', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}>+</button>
                       </div>
                     </div>
                     <button onClick={() => updateQty(item._id, 0)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ccc', fontSize: '1rem' }}>🗑</button>
