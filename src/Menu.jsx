@@ -207,8 +207,15 @@ function Menu() {
             <div style={{ flex: 1, overflowY: 'auto', padding: '1rem 1.5rem' }}>
               {checkoutStep === 'address' ? (
                 <div>
-                  <p style={{ color: '#888', fontSize: '0.9rem', marginBottom: '1rem' }}>Where should we deliver your order?</p>
-                  <input className="form-control" placeholder="Enter full delivery address*" value={deliveryAddress} onChange={e => setDeliveryAddress(e.target.value)} style={{ marginBottom: '1rem' }} />
+                  <p style={{ color: '#555', fontSize: '0.95rem', marginBottom: '1rem', fontWeight: 600 }}>📍 Where should we deliver your order?</p>
+                  <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Delivery Address *</label>
+                  <textarea
+                    placeholder="Enter your full delivery address e.g. 12 Adeola Street, Victoria Island, Lagos"
+                    value={deliveryAddress}
+                    onChange={e => setDeliveryAddress(e.target.value)}
+                    rows={4}
+                    style={{ width: '100%', padding: '12px 14px', borderRadius: 8, border: '2px solid #D47C2F', fontSize: '0.9rem', color: '#000', background: '#fff', resize: 'vertical', fontFamily: 'inherit', marginBottom: '1rem', outline: 'none' }}
+                  />
                   <div style={{ background: '#f9f9f9', borderRadius: 8, padding: '1rem' }}>
                     <strong style={{ fontSize: '0.9rem' }}>Order Summary</strong>
                     {cart.map(i => (
