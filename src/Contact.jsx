@@ -5,6 +5,7 @@ import {
   submitRestaurantReview,
   getStoredUser,
   isLoggedIn,
+  api,
 } from './api';
 
 function Contact() {
@@ -51,11 +52,23 @@ function Contact() {
     return () => { mounted = false; };
   }, []); // runs once on mount — no dependencies needed
 
-  const handleContact = (e) => {
+  const [contactLoading, setContactLoading] = useState(false);
+
+  const handleContact = async (e) => {
     e.preventDefault();
-    setContactSent(true);
-    showToast('Message sent! We will get back to you shortly.');
-    setContactForm({ name: '', phone: '', email: '', message: '' });
+    setContactLoading(true);
+    try {
+      await api("/contact", {
+        method: "POST",
+        body: JSON.stringify(contactForm),
+      });
+      setContactSent(true);
+      showToast('Message sent! We will get back to you shortly.');
+      setContactForm({ name: '', phone: '', email: '', message: '' });
+    } catch (err) {
+      showToast(err.message, 'error');
+    }
+    setContactLoading(false);
   };
 
   const handleReview = async (e) => {
@@ -208,7 +221,10 @@ function Contact() {
                         <textarea cols="30" rows="10" placeholder="Message" value={contactForm.message} onChange={e => setContactForm(p => ({ ...p, message: e.target.value }))} />
                       </div>
                       <div className="send-wrap">
-                        <button type="submit" className="tf-button style3">Send Message</button>
+                        <button type="submit" className="tf-button style3" disabled={contactLoading}
+                          style={{ opacity: contactLoading ? 0.6 : 1 }}>
+                          {contactLoading ? 'Sending...' : 'Send Message'}
+                        </button>
                       </div>
                     </form>
                   )}
