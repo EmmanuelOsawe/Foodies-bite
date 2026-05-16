@@ -17,22 +17,21 @@ export const connectSocket = () => {
   });
 
   socket.on("new_food_notification", (data) => {
+    // No JSX — use plain toast with string content
     toast(
-      () => (
-        <div
-          onClick={() => { window.location.href = "/Menu"; }}
-          style={{ cursor: "pointer" }}
-        >
-          <strong>{data.title}</strong>
-          <p style={{ margin: "4px 0 0", fontSize: "0.85rem" }}>{data.message}</p>
-          {data.food?.image && (
-            <img src={data.food.image} alt={data.food.name}
-              style={{ width: "100%", borderRadius: 6, marginTop: 6 }} />
-          )}
-          <small style={{ color: "#ccc" }}>Tap to view menu →</small>
-        </div>
-      ),
-      { duration: 8000, icon: "🍽️" }
+      `🍽️ ${data.title} — ${data.message} (Tap to view menu)`,
+      {
+        duration: 8000,
+        style: {
+          background: "#3B1F0A",
+          color: "#fff",
+          fontWeight: 600,
+          fontSize: "0.9rem",
+          borderRadius: "8px",
+          cursor: "pointer",
+        },
+        onClick: () => { window.location.href = "/Menu"; },
+      }
     );
   });
 
