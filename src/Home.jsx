@@ -1,6 +1,63 @@
+import { useState } from 'react';
 import './App.css';
+import { makeReservation, loginUser, registerUser, saveAuth, clearAuth, getStoredUser, isLoggedIn } from './api';
 
 function Home() {
+  const [user, setUser] = useState(getStoredUser());
+  const [authOpen, setAuthOpen] = useState(false);
+  const [authTab, setAuthTab] = useState('login');
+  const [authForm, setAuthForm] = useState({ name: '', email: '', password: '' });
+  const [authLoading, setAuthLoading] = useState(false);
+  const [authError, setAuthError] = useState('');
+
+  // Reservation state
+  const [resForm, setResForm] = useState({ name: '', phone: '', time: '', guests: '2', date: '' });
+  const [resLoading, setResLoading] = useState(false);
+  const [resSuccess, setResSuccess] = useState(false);
+  const [resError, setResError] = useState('');
+
+  const handleAuth = async (e) => {
+    e.preventDefault();
+    setAuthError(''); setAuthLoading(true);
+    try {
+      let data;
+      if (authTab === 'login') {
+        data = await loginUser(authForm.email, authForm.password);
+      } else {
+        const fd = new FormData();
+        fd.append('name', authForm.name);
+        fd.append('email', authForm.email);
+        fd.append('password', authForm.password);
+        data = await registerUser(fd);
+      }
+      saveAuth(data.token, data.user);
+      setUser(data.user);
+      setAuthOpen(false);
+    } catch (err) { setAuthError(err.message); }
+    setAuthLoading(false);
+  };
+
+  const handleLogout = () => { clearAuth(); setUser(null); };
+
+  const handleReservation = async (e) => {
+    e.preventDefault();
+    setResError(''); setResLoading(true);
+    if (!isLoggedIn()) {
+      setResError('Please sign in first to book a table.');
+      setResLoading(false);
+      setAuthOpen(true);
+      return;
+    }
+    try {
+      await makeReservation({ date: resForm.date, time: resForm.time, guests: Number(resForm.guests) });
+      setResSuccess(true);
+      setResForm({ name: '', phone: '', time: '', guests: '2', date: '' });
+    } catch (err) { setResError(err.message); }
+    setResLoading(false);
+  };
+
+  const inputStyle = { color: '#000', background: '#fff', border: '1.5px solid #bbb', borderRadius: 6, padding: '10px 14px', width: '100%', fontSize: '0.9rem', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box' };
+  const labelStyle = { display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: 4, color: '#555' };
 
     return (
 
@@ -119,32 +176,26 @@ function Home() {
                                         </li>
                                     </ul>
                                 </nav>{/* /#main-nav */}
-                                <div className="sidebar-btn">
-                                    <a className="btn-side">
-                                        <span />
-                                    </a>
-                                    <div className="sidebar-content">
-                                        <img className="mb-50" src="assets/images/logo/logo-sidebar.png" alt />
-                                        <p className="mb-46">
-                                            Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                                            dis parturient montes, nascetur ridiculus mus.
-                                        </p>
-                                        <h4 className="mb-11">+(406) 555-0120</h4>
-                                        <p className="mb-5p">Andé Restaurant 767 5th Avenue, Paris 10021, France</p>
-                                        <p className="mb-30">Brochetterestaurant@gmail.com</p>
-                                        <div className="line" />
-                                        <p>Opening Hour: <br />
-                                            Mon - Fri : 9.00am - 22.00pm, Holidays : Close</p>
-                                        <div className="line" />
-                                        <ul className="list-social">
-                                            <li><a href="home_02.html#"><i className="fa-brands fa-facebook-f" /></a></li>
-                                            <li><a href="home_02.html#"><i className="fa-brands fa-twitter" /></a></li>
-                                            <li><a href="home_02.html#"><i className="fa-solid fa-envelope" /></a></li>
-                                            <li><a href="home_02.html#"><i className="fa-brands fa-instagram" /></a></li>
-                                        </ul>
+                                {/* Auth buttons */}
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                  {user ? (
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                      <span style={{ fontWeight: 600, fontSize: '0.9rem', color: '#3B1F0A' }}>
+                                        👋 {user.name.split(' ')[0]}
+                                      </span>
+                                      <button onClick={handleLogout}
+                                        style={{ background: 'none', border: '1.5px solid #D47C2F', color: '#D47C2F', borderRadius: 50, padding: '6px 16px', fontWeight: 600, cursor: 'pointer', fontSize: '0.85rem' }}>
+                                        Sign Out
+                                      </button>
                                     </div>
+                                  ) : (
+                                    <button onClick={() => setAuthOpen(true)}
+                                      style={{ background: '#D47C2F', color: 'white', border: 'none', borderRadius: 50, padding: '8px 20px', fontWeight: 700, cursor: 'pointer', fontSize: '0.9rem' }}>
+                                      Sign In
+                                    </button>
+                                  )}
                                 </div>
-                                <div className="mobile-button"><span /></div>{/* /.mobile-button */}
+                                <div className="mobile-button"><span /></div>
                             </div>
                         </div>
                     </header>
@@ -236,81 +287,89 @@ function Home() {
                                 </div>
 <div className="col-lg-5 col-md-12">
   <div className="opening-book">
-
-    <form>
-
-      <h4 className="heading">book a table</h4>
-
-      <p>
-        After booking we will call the customer to confirm,
-        so please enter your name and phone number.
-      </p>
-
-      {/* NAME */}
-      <div className="form-group">
-        <input
-          type="text"
-          className="form-control custom-input"
-          placeholder="Name*"
-        />
+    {resSuccess ? (
+      <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎉</div>
+        <h4 style={{ color: '#2D6A4F', marginBottom: '0.5rem' }}>Table Booked!</h4>
+        <p style={{ color: '#555', marginBottom: '1.25rem' }}>We will contact you shortly to confirm your reservation.</p>
+        <button className="tf-button style3" onClick={() => setResSuccess(false)}>Book Another Table</button>
       </div>
+    ) : (
+      <form onSubmit={handleReservation}>
+        <h4 className="heading">book a table</h4>
+        <p>After booking we will call you to confirm. Please sign in first.</p>
 
-      {/* ROW 1 */}
-      <div className="form-row">
+        {resError && (
+          <div style={{ background: '#FFF3F3', border: '1px solid #FFCDD2', color: '#c0392b', padding: '10px 14px', borderRadius: 8, fontSize: '0.85rem', marginBottom: '1rem' }}>
+            ⚠ {resError}
+            {resError.includes('sign in') && (
+              <button type="button" onClick={() => setAuthOpen(true)}
+                style={{ background: 'none', border: 'none', color: '#D47C2F', fontWeight: 700, cursor: 'pointer', textDecoration: 'underline', marginLeft: 6 }}>
+                Sign In Now
+              </button>
+            )}
+          </div>
+        )}
 
-        <div className="form-group col-md-6">
-          <input
-            type="text"
-            className="form-control custom-input"
-            placeholder="Phone*"
-          />
+        <div className="form-group">
+          <label style={labelStyle}>Your Name *</label>
+          <input type="text" className="form-control" placeholder="e.g. John Doe"
+            value={resForm.name} onChange={e => setResForm(p => ({ ...p, name: e.target.value }))}
+            style={inputStyle} required />
         </div>
 
-        <div className="form-group col-md-6">
-          <select
-            className="form-control custom-input"
-          >
-            <option>Arrival time</option>
-            <option>10:00 AM</option>
-            <option>12:00 PM</option>
-            <option>6:00 PM</option>
-          </select>
+        <div className="form-row">
+          <div className="form-group col-md-6">
+            <label style={labelStyle}>Phone Number *</label>
+            <input type="text" className="form-control" placeholder="e.g. +234 801 234 5678"
+              value={resForm.phone} onChange={e => setResForm(p => ({ ...p, phone: e.target.value }))}
+              style={inputStyle} required />
+          </div>
+          <div className="form-group col-md-6">
+            <label style={labelStyle}>🕐 Preferred Arrival Time *</label>
+            <input type="text" className="form-control" placeholder="e.g. 7:30 PM or 19:30"
+              value={resForm.time} onChange={e => setResForm(p => ({ ...p, time: e.target.value }))}
+              style={inputStyle} required />
+          </div>
         </div>
 
-      </div>
-
-      {/* ROW 2 */}
-      <div className="form-row">
-
-        <div className="form-group col-md-6">
-          <select
-            className="form-control custom-input"
-          >
-            <option>Amount of people</option>
-            <option>1 Person</option>
-            <option>2 People</option>
-            <option>5 People</option>
-          </select>
+        <div className="form-row">
+          <div className="form-group col-md-6">
+            <label style={labelStyle}>👥 Number of Guests *</label>
+            <select className="form-control" value={resForm.guests}
+              onChange={e => setResForm(p => ({ ...p, guests: e.target.value }))}
+              style={inputStyle}>
+              {[1,2,3,4,5,6,7,8,9,10].map(n => (
+                <option key={n} value={n}>{n} Guest{n > 1 ? 's' : ''}</option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group col-md-6">
+            <label style={labelStyle}>📅 Date *</label>
+            <input type="date" className="form-control"
+              value={resForm.date} onChange={e => setResForm(p => ({ ...p, date: e.target.value }))}
+              min={new Date().toISOString().split('T')[0]}
+              style={inputStyle} required />
+          </div>
         </div>
 
-        <div className="form-group col-md-6">
-          <input
-            type="date"
-            className="form-control custom-input"
-          />
-        </div>
+        {!isLoggedIn() && (
+          <p style={{ fontSize: '0.82rem', color: '#c0392b', marginBottom: '0.75rem' }}>
+            ⚠ You must{' '}
+            <button type="button" onClick={() => setAuthOpen(true)}
+              style={{ background: 'none', border: 'none', color: '#D47C2F', fontWeight: 700, cursor: 'pointer', textDecoration: 'underline', fontSize: '0.82rem' }}>
+              sign in
+            </button>{' '}
+            to complete this booking.
+          </p>
+        )}
 
-      </div>
-
-      <button
-        type="submit"
-        className="tf-button style3"
-      >
-        book a table
-      </button>
-
-    </form>
-
+        <button type="submit" className="tf-button style3" disabled={resLoading}
+          style={{ opacity: resLoading ? 0.6 : 1 }}>
+          {resLoading ? 'Booking...' : 'Book a Table'}
+        </button>
+      </form>
+    )}
   </div>
 </div>                            </div>
                         </div>
@@ -1157,6 +1216,63 @@ function Home() {
                 </div>
             </div>
 
+      {/* ─── AUTH MODAL ─────────────────────────────────────────────────── */}
+      {authOpen && (
+        <div onClick={e => e.target === e.currentTarget && setAuthOpen(false)}
+          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', zIndex: 99999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+          <div style={{ background: 'white', borderRadius: 16, padding: '2rem', width: 'min(420px,95vw)', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 20px 60px rgba(0,0,0,0.3)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                {['login', 'register'].map(t => (
+                  <button key={t} onClick={() => { setAuthTab(t); setAuthError(''); }}
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 700, borderBottom: authTab === t ? '2px solid #D47C2F' : '2px solid transparent', paddingBottom: 4, color: authTab === t ? '#3B1F0A' : '#999', fontFamily: 'inherit' }}>
+                    {t === 'login' ? 'Sign In' : 'Sign Up'}
+                  </button>
+                ))}
+              </div>
+              <button onClick={() => setAuthOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.3rem', lineHeight: 1 }}>✕</button>
+            </div>
+
+            {authError && (
+              <div style={{ background: '#FFF3F3', border: '1px solid #FFCDD2', color: '#c0392b', padding: '10px 14px', borderRadius: 8, fontSize: '0.9rem', marginBottom: '1rem' }}>
+                ⚠ {authError}
+              </div>
+            )}
+
+            <form onSubmit={handleAuth}>
+              {authTab === 'register' && (
+                <div style={{ marginBottom: '1rem' }}>
+                  <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Full Name</label>
+                  <input type="text" value={authForm.name} onChange={e => setAuthForm(p => ({ ...p, name: e.target.value }))} placeholder="John Doe" required
+                    style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #bbb', borderRadius: 8, fontSize: '0.95rem', color: '#000', background: '#fff', outline: 'none', fontFamily: 'inherit' }} />
+                </div>
+              )}
+              <div style={{ marginBottom: '1rem' }}>
+                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Email Address</label>
+                <input type="email" value={authForm.email} onChange={e => setAuthForm(p => ({ ...p, email: e.target.value }))} placeholder="john@example.com" required
+                  style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #bbb', borderRadius: 8, fontSize: '0.95rem', color: '#000', background: '#fff', outline: 'none', fontFamily: 'inherit' }} />
+              </div>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Password</label>
+                <input type="password" value={authForm.password} onChange={e => setAuthForm(p => ({ ...p, password: e.target.value }))} placeholder="••••••••" required
+                  style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #bbb', borderRadius: 8, fontSize: '0.95rem', color: '#000', background: '#fff', outline: 'none', fontFamily: 'inherit' }} />
+              </div>
+              <button type="submit" className="tf-button style3" disabled={authLoading}
+                style={{ width: '100%', textAlign: 'center', opacity: authLoading ? 0.6 : 1 }}>
+                {authLoading ? 'Please wait...' : authTab === 'login' ? 'Sign In' : 'Create Account'}
+              </button>
+            </form>
+
+            <p style={{ textAlign: 'center', marginTop: '1rem', fontSize: '0.85rem', color: '#888' }}>
+              {authTab === 'login' ? "Don't have an account?" : 'Already have an account?'}
+              <button onClick={() => { setAuthTab(authTab === 'login' ? 'register' : 'login'); setAuthError(''); }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#D47C2F', fontWeight: 700, marginLeft: 4, fontFamily: 'inherit' }}>
+                {authTab === 'login' ? 'Sign Up' : 'Sign In'}
+              </button>
+            </p>
+          </div>
+        </div>
+      )}
      )        
 }
 
