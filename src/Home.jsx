@@ -60,7 +60,7 @@ function Home() {
   const labelStyle = { display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: 4, color: '#555' };
 
     return (
-
+      <>
             <div>
                 {/* preloader */}
                 <div className="preloader">
@@ -1273,6 +1273,7 @@ function Home() {
           </div>
         </div>
       )}
+      </>
      )        
 }
 
