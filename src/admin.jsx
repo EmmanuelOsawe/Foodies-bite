@@ -72,8 +72,11 @@ const STYLES = `
   .btn:disabled{opacity:0.5;cursor:not-allowed}
   .form-group{margin-bottom:1rem}
   .form-label{display:block;font-size:0.85rem;font-weight:600;color:#1a1a2e;margin-bottom:6px}
-  .form-input{width:100%;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:#1a1a2e;background:white;outline:none;transition:border-color 0.2s}
-  .form-input:focus{border-color:var(--brand)}
+  .form-input{width:100%;padding:10px 14px;border:2px solid #94A3B8 !important;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:#000 !important;background:#ffffff !important;outline:none;transition:border-color 0.2s;box-sizing:border-box;-webkit-text-fill-color:#000 !important;opacity:1 !important}
+  .form-input:focus{border-color:#D47C2F !important;box-shadow:0 0 0 3px rgba(212,124,47,0.2)}
+  .form-input::placeholder{color:#94A3B8 !important;-webkit-text-fill-color:#94A3B8 !important}
+  input.form-input,select.form-input,textarea.form-input{color:#000 !important;background:#ffffff !important;-webkit-text-fill-color:#000 !important}
+  input[type=number].form-input,input[type=text].form-input,input[type=email].form-input,input[type=password].form-input{color:#000 !important;background:#ffffff !important;-webkit-text-fill-color:#000 !important;border:2px solid #94A3B8 !important}
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
   .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:99999;display:flex;align-items:center;justify-content:center;padding:1rem}
   .modal-box{background:white;border-radius:16px;width:min(580px,95vw);max-height:88vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,0.35);position:relative}
