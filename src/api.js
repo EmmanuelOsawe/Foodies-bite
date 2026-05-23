@@ -2,6 +2,7 @@
 // Central API helper — import this in any component
 
 const BASE_URL = "http://localhost:5000/api";
+export const PAYSTACK_PUBLIC_KEY = "pk_test_d539a606bbc28e757855bec287818bde5c68d7dc"; // ← paste your Paystack PUBLIC key here
 
 const getToken = () => localStorage.getItem("fb_token");
 
@@ -55,6 +56,35 @@ export const initializePayment = (orderId) =>
 
 export const requestRefund = (orderId) =>
   api(`/payments/refund/${orderId}`, { method: "POST" });
+
+/**
+ * payWithPaystack — opens Paystack inline popup directly on your site.
+ * No redirect, no white screen.
+ *
+ * @param {object} options
+ * @param {string} options.email        - customer email
+ * @param {number} options.amount       - amount in NAIRA (we convert to kobo here)
+ * @param {string} options.reference    - unique reference from your backend
+ * @param {function} options.onSuccess  - called when payment completes
+ * @param {function} options.onClose    - called when user closes the popup
+ */
+export const payWithPaystack = ({ email, amount, reference, onSuccess, onClose }) => {
+  const handler = window.PaystackPop.setup({
+    key: PAYSTACK_PUBLIC_KEY,
+    email,
+    amount: amount * 100, // convert naira to kobo
+    ref: reference,
+    currency: "NGN",
+    callback: (response) => {
+      // response.reference is the transaction reference
+      onSuccess(response);
+    },
+    onClose: () => {
+      onClose && onClose();
+    },
+  });
+  handler.openIframe();
+};
 
 // Reservation helpers
 export const makeReservation = (body) =>
