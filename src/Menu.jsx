@@ -13,6 +13,7 @@ import {
   loginUser,
   registerUser,
   api,
+  payWithPaystack,
 } from './api';
 
 const GOOGLE_CLIENT_ID = "your_google_client_id_here"; // ← paste your Google Client ID
@@ -32,6 +33,7 @@ function Menu() {
   const [toast, setToast] = useState(null);
   const [orderLoading, setOrderLoading] = useState(false);
   const [deliveryAddress, setDeliveryAddress] = useState('');
+  const [orderNote, setOrderNote] = useState('');
   const [checkoutStep, setCheckoutStep] = useState('cart');
   const [resDate, setResDate] = useState('');
   const [resTime, setResTime] = useState('');
@@ -90,16 +92,33 @@ function Menu() {
     if (!isLoggedIn()) { setAuthOpen(true); return; }
     if (checkoutStep === 'cart') { setCheckoutStep('address'); return; }
     if (!deliveryAddress.trim()) { showToast('Enter your delivery address', 'error'); return; }
+
     setOrderLoading(true);
     try {
       const items = cart.map(i => ({ foodId: i._id, quantity: i.qty }));
-      const orderRes = await placeOrder({ items, deliveryAddress });
+      const orderRes = await placeOrder({ items, deliveryAddress, note: orderNote || undefined });
       const payRes = await initializePayment(orderRes.order._id);
-      showToast('Redirecting to payment...');
-      setCart([]);
-      setCartOpen(false);
-      setCheckoutStep('cart');
-      window.open(payRes.authorization_url, '_blank');
+
+      // Use inline popup — no redirect, no white screen
+      payWithPaystack({
+        email: user.email,
+        amount: orderRes.order.totalAmount, // in naira, api.js converts to kobo
+        reference: payRes.reference,
+        onSuccess: (response) => {
+          showToast('Payment successful! Your order is confirmed 🎉', 'success');
+          setCart([]);
+          setCartOpen(false);
+          setCheckoutStep('cart');
+          setOrderNote('');
+          setDeliveryAddress('');
+          console.log('Payment reference:', response.reference);
+        },
+        onClose: () => {
+          showToast('Payment cancelled. Your order is saved — you can pay later.', 'error');
+          setCartOpen(false);
+          setCheckoutStep('cart');
+        },
+      });
     } catch (err) {
       showToast(err.message, 'error');
     }
@@ -245,8 +264,18 @@ function Menu() {
                     placeholder="Enter your full delivery address e.g. 12 Adeola Street, Victoria Island, Lagos"
                     value={deliveryAddress}
                     onChange={e => setDeliveryAddress(e.target.value)}
-                    rows={4}
-                    style={{ width: '100%', padding: '12px 14px', borderRadius: 8, border: '2px solid #D47C2F', fontSize: '0.9rem', color: '#000', background: '#fff', resize: 'vertical', fontFamily: 'inherit', marginBottom: '1rem', outline: 'none' }}
+                    rows={3}
+                    style={{ width: '100%', padding: '12px 14px', borderRadius: 8, border: '2px solid #D47C2F', fontSize: '0.9rem', color: '#000', background: '#fff', resize: 'vertical', fontFamily: 'inherit', marginBottom: '0.75rem', outline: 'none' }}
+                  />
+                  <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>
+                    🥜 Allergy / Special Note (optional)
+                  </label>
+                  <textarea
+                    placeholder="e.g. No pepper please, I am allergic to nuts, extra sauce..."
+                    value={orderNote}
+                    onChange={e => setOrderNote(e.target.value)}
+                    rows={3}
+                    style={{ width: '100%', padding: '10px 14px', borderRadius: 8, border: '1.5px solid #ddd', fontSize: '0.9rem', color: '#000', background: '#fff', resize: 'vertical', fontFamily: 'inherit', marginBottom: '1rem', outline: 'none' }}
                   />
                   <div style={{ background: '#f9f9f9', borderRadius: 8, padding: '1rem' }}>
                     <strong style={{ fontSize: '0.9rem' }}>Order Summary</strong>
@@ -466,22 +495,36 @@ function Menu() {
                   <div className="content">
                     <form onSubmit={handleReservation}>
                       <div className="form-group">
-                        <input type="date" className="form-control" value={resDate} onChange={e => setResDate(e.target.value)} min={new Date().toISOString().split('T')[0]} required />
+                        <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: 6, color: '#3B1F0A' }}>📅 Reservation Date *</label>
+                        <input type="date" className="form-control" value={resDate}
+                          onChange={e => setResDate(e.target.value)}
+                          min={new Date().toISOString().split('T')[0]} required
+                          style={{ color: '#000', background: '#fff', border: '1.5px solid #bbb', borderRadius: 8, padding: '10px 14px', width: '100%' }} />
                       </div>
                       <div className="form-row">
                         <div className="form-group col-md-6">
-                          <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: 4, color: '#555' }}>Preferred Time</label>
-                          <input type="time" className="form-control" value={resTime} onChange={e => setResTime(e.target.value)} required style={{ color: '#000', background: '#fff' }} />
+                          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: 6, color: '#3B1F0A' }}>🕐 Preferred Arrival Time *</label>
+                          <input type="text" className="form-control" value={resTime}
+                            onChange={e => setResTime(e.target.value)}
+                            placeholder="e.g. 7:30 PM or 19:30" required
+                            style={{ color: '#000', background: '#fff', border: '1.5px solid #bbb', borderRadius: 8, padding: '10px 14px', width: '100%' }} />
                         </div>
                         <div className="form-group col-md-6">
-                          <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: 4, color: '#555' }}>Number of Guests</label>
-                          <select className="form-control" value={resGuests} onChange={e => setResGuests(e.target.value)} style={{ color: '#000', background: '#fff' }}>
+                          <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: 6, color: '#3B1F0A' }}>👥 Number of Guests *</label>
+                          <select className="form-control" value={resGuests}
+                            onChange={e => setResGuests(e.target.value)}
+                            style={{ color: '#000', background: '#fff', border: '1.5px solid #bbb', borderRadius: 8, padding: '10px 14px', width: '100%' }}>
                             {[1,2,3,4,5,6,7,8,9,10].map(n => (
                               <option key={n} value={n}>{n} Guest{n > 1 ? 's' : ''}</option>
                             ))}
                           </select>
                         </div>
                       </div>
+                      {!isLoggedIn() && (
+                        <p style={{ fontSize: '0.85rem', color: '#c0392b', marginBottom: '0.75rem', fontWeight: 600 }}>
+                          ⚠ Please <button type="button" onClick={() => setAuthOpen(true)} style={{ background: 'none', border: 'none', color: '#D47C2F', fontWeight: 700, cursor: 'pointer', textDecoration: 'underline', fontSize: '0.85rem' }}>sign in</button> to book a table.
+                        </p>
+                      )}
                       <button type="submit" className="tf-button style3" disabled={resLoading} style={{ opacity: resLoading ? 0.6 : 1 }}>
                         {resLoading ? 'Booking...' : 'Book Your Table'}
                       </button>
