@@ -2,7 +2,7 @@
 // Central API helper — import this in any component
 
 const BASE_URL = "http://localhost:5000/api";
-export const PAYSTACK_PUBLIC_KEY = "pk_test_d539a606bbc28e757855bec287818bde5c68d7dc"; // ← paste your Paystack PUBLIC key here
+export const PAYSTACK_PUBLIC_KEY = "pk_live_882afb32f5bafc6cb805582508a1541910a75fde"; // ← paste your Paystack PUBLIC key here
 
 const getToken = () => localStorage.getItem("fb_token");
 

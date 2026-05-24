@@ -39,7 +39,7 @@ function Menu() {
   const [resTime, setResTime] = useState('');
   const [resGuests, setResGuests] = useState(2);
   const [resLoading, setResLoading] = useState(false);
-  const [authForm, setAuthForm] = useState({ name: '', email: '', password: '' });
+  const [authForm, setAuthForm] = useState({ name: '', email: '', password: '', phone: '' });
   const [authLoading, setAuthLoading] = useState(false);
   const [authError, setAuthError] = useState('');
 
@@ -151,6 +151,7 @@ function Menu() {
         fd.append('name', authForm.name);
         fd.append('email', authForm.email);
         fd.append('password', authForm.password);
+        if (authForm.phone) fd.append('phone', authForm.phone);
         data = await registerUser(fd);
       }
       saveAuth(data.token, data.user);
@@ -224,6 +225,14 @@ function Menu() {
                 <input className="form-control" type="password" value={authForm.password} onChange={e => setAuthForm(p => ({ ...p, password: e.target.value }))} placeholder="••••••••" required
                   style={{ color: '#000', background: '#fff', border: '1.5px solid #ddd', borderRadius: 8, padding: '10px 14px', width: '100%', fontSize: '0.95rem' }} />
               </div>
+              {authTab === 'register' && (
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Phone Number (for SMS notifications)</label>
+                  <input className="form-control" type="tel" value={authForm.phone || ''} onChange={e => setAuthForm(p => ({ ...p, phone: e.target.value }))} placeholder="+2348012345678"
+                    style={{ color: '#000', background: '#fff', border: '1.5px solid #ddd', borderRadius: 8, padding: '10px 14px', width: '100%', fontSize: '0.95rem' }} />
+                  <p style={{ fontSize: '0.75rem', color: '#888', marginTop: 4 }}>Include country code e.g. +234 for Nigeria</p>
+                </div>
+              )}
               <button type="submit" className="tf-button style3" disabled={authLoading} style={{ width: '100%', textAlign: 'center', opacity: authLoading ? 0.6 : 1 }}>
                 {authLoading ? 'Please wait...' : authTab === 'login' ? 'Sign In' : 'Create Account'}
               </button>
