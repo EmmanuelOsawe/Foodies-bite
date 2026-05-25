@@ -56,8 +56,21 @@ function Home() {
     setResLoading(false);
   };
 
-  const inputStyle = { color: '#000', background: '#fff', border: '1.5px solid #bbb', borderRadius: 6, padding: '10px 14px', width: '100%', fontSize: '0.9rem', fontFamily: 'inherit', outline: 'none', boxSizing: 'border-box' };
-  const labelStyle = { display: 'block', fontSize: '0.8rem', fontWeight: 600, marginBottom: 4, color: '#555' };
+  const inputStyle = {
+    color: '#000',
+    background: '#ffffff',
+    border: '2px solid #999',
+    borderRadius: 6,
+    padding: '10px 14px',
+    width: '100%',
+    fontSize: '0.9rem',
+    fontFamily: 'inherit',
+    outline: 'none',
+    boxSizing: 'border-box',
+    WebkitTextFillColor: '#000',
+    opacity: 1,
+  };
+  const labelStyle = { display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: 4, color: '#fff' };
 
     return (
       <>
