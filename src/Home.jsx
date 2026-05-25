@@ -49,7 +49,13 @@ function Home() {
       return;
     }
     try {
-      await makeReservation({ date: resForm.date, time: resForm.time, guests: Number(resForm.guests) });
+      await makeReservation({
+        date: resForm.date,
+        time: resForm.time,
+        guests: Number(resForm.guests),
+        phone: resForm.phone || null,   // pass form phone for SMS
+        name: resForm.name,             // pass form name for notification
+      });
       setResSuccess(true);
       setResForm({ name: '', phone: '', time: '', guests: '2', date: '' });
     } catch (err) { setResError(err.message); }
