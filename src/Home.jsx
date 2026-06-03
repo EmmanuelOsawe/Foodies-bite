@@ -98,7 +98,7 @@ function Home() {
                                         <div className="contact-left">
                                             <div className="icon"><i className="fa fa-utensils" /></div>
                                             <div className="t">
-                                                <p>Basilicofood123@gmail.com </p>
+                                                <p>Foodies-bites123@gmail.com </p>
                                                 <p>+(406) 555-0120</p>
                                             </div>
                                         </div>
@@ -149,11 +149,7 @@ function Home() {
                                             <a href="/Menu">Menu</a>
                                         </li>
                                         <li className="menu-item menu-item-has-children">
-                                            <a href="home_02.html#">Contact</a>
-                                            <ul className="sub-menu">
-                                                <li className="menu-item"><a href="/Contact">Contact 01</a></li>
-                                                <li className="menu-item"><a href="contact_02.html">Contact 02</a></li>
-                                            </ul>
+                                            <a href="/Contact">Contact</a>
                                         </li>
                                     </ul>
                                 </nav>{/* /#main-nav */}
@@ -1146,7 +1142,7 @@ function Home() {
                                                 <p>
                                                     <span>book a table:
                                                     </span>
-                                                    Basilicofood123@gmail.com
+                                                    Foodies-bites123@gmail.com
                                                 </p>
                                                 <p className="cl">978-212-8600</p>
                                             </li>
