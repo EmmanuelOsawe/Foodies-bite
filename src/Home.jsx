@@ -136,55 +136,17 @@ function Home() {
                                     <ul id="menu-primary-menu" className="menu">
                                         <li className="menu-item menu-item-has-children  current-menu-item">
                                             <a href="home_02.html#">Home</a>
-                                            <ul className="sub-menu">
-                                                <li className="menu-item"><a href="index.html">Home 01</a></li>
-                                                <li className="menu-item current-item"><a href="home_02.html">Home 02</a></li>
-                                                <li className="menu-item"><a href="home_03.html">Home 03</a></li>
-                                                <li className="menu-item"><a href="home_04.html">Home 04</a></li>
-                                            </ul>
                                         </li>
                                         <li className="menu-item menu-item-has-children">
                                             <a href="home_02.html#">Pages</a>
                                             <ul className="sub-menu">
-                                                <li className="menu-item"><a href="404.html">Page 404</a></li>
                                                 <li className="menu-item"><a href="/About">About</a></li>
-                                                <li className="menu-item"><a href="careers.html">Careers</a></li>
-                                                <li className="menu-item"><a href="coming_soon.html">Coming Soon</a></li>
                                                 <li className="menu-item"><a href="/Faqs">Faqs</a></li>
-                                                <li className="menu-item"><a href="/Gallery">Gallery</a></li>
-                                                <li className="menu-item"><a href="history.html">History</a></li>
-                                                <li className="menu-item"><a href="location.html">Location</a></li>
                                                 <li className="menu-item"><a href="/admin/">Admin</a></li>
-                                                <li className="menu-item"><a href="gift_vouchers_detail.html">Gift Detail</a></li>
                                             </ul>
                                         </li>
                                         <li className="menu-item menu-item-has-children">
-                                            <a href="home_02.html#">Menu</a>
-                                            <ul className="sub-menu">
-                                                <li className="menu-item"><a href="/Menu">Menu List</a></li>
-                                                <li className="menu-item"><a href="menu_zigzag.html">Menu Zingzag</a></li>
-                                            </ul>
-                                        </li>
-                                        <li className="menu-item menu-item-has-children">
-                                            <a href="home_02.html#">Portfolio</a>
-                                            <ul className="sub-menu">
-                                                <li className="menu-item"><a href="colums_full_width.html">Portfolio Full Width</a></li>
-                                                <li className="menu-item"><a href="portfolio_carousel.html">Portfolio Carousel</a></li>
-                                                <li className="menu-item"><a href="portfolio_mansonry.html">Portfolio Mansonry</a></li>
-                                                <li className="menu-item"><a href="portfolio_three_colum.html">Portfolio Three Colum</a>
-                                                </li>
-                                                <li className="menu-item"><a href="portfolio_detail.html">Portfolio Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li className="menu-item menu-item-has-children">
-                                            <a href="home_02.html#">Blog</a>
-                                            <ul className="sub-menu">
-                                                <li className="menu-item"><a href="blog_creative.html">Blog Creative</a></li>
-                                                <li className="menu-item"><a href="blog_full_width.html">Blog Full Width</a></li>
-                                                <li className="menu-item"><a href="blog_list.html">Blog List</a></li>
-                                                <li className="menu-item"><a href="blog_right_sidebar.html">Blog Right Sidebar</a></li>
-                                                <li className="menu-item"><a href="blog_single.html">Blog Detail</a></li>
-                                            </ul>
+                                            <a href="/Menu">Menu</a>
                                         </li>
                                         <li className="menu-item menu-item-has-children">
                                             <a href="home_02.html#">Contact</a>

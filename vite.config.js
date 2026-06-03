@@ -8,6 +8,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
+        id: "/",
         name: "Foodies-Bite",
         short_name: "Foodies",
         description: "Food ordering platform",
