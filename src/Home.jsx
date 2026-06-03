@@ -99,7 +99,7 @@ function Home() {
                                             <div className="icon"><i className="fa fa-utensils" /></div>
                                             <div className="t">
                                                 <p>Foodies-bites123@gmail.com </p>
-                                                <p>+(406) 555-0120</p>
+                                                <p>+234 803 456 7890</p>
                                             </div>
                                         </div>
                                         <div className="header__logo">
