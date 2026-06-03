@@ -108,9 +108,9 @@ function Home() {
                                         <div className="contact-right">
                                             <div className="icon"><i className="fa-solid fa-location-dot" /></div>
                                             <div className="t">
-                                                <p>4517 Washington Ave. Manchester,
+                                                <p>Behind Berith Square, 1st Avenue, Gwarinpa
                                                 </p>
-                                                <p>Kentucky 39495, USA</p>
+                                                <p>Abuja, Nigeria</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1135,7 +1135,7 @@ function Home() {
                                         <ul>
                                             <li>
                                                 <p>
-                                                    <span>Location:</span> 4517 Washington Ave. Manchester, Kentucky 39495, USA
+                                                    <span>Location:</span> Behind Berith Square, 1st Avenue, Gwarinpa Kentucky 39495, USA
                                                 </p>
                                             </li>
                                             <li>
