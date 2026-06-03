@@ -103,7 +103,7 @@ function Home() {
                                             </div>
                                         </div>
                                         <div className="header__logo">
-                                            <a href="index.html"><img src="assets/images/logo/logo-02.png" alt /></a>
+                                            <a href="index.html"><img src="assets/images/logo/logo-192.png" alt /></a>
                                         </div>
                                         <div className="contact-right">
                                             <div className="icon"><i className="fa-solid fa-location-dot" /></div>
