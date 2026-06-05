@@ -138,28 +138,52 @@ function Home() {
                                         <i className="fa fa-x close-icon" />
                                     </div>
                                 </div>
-                                <nav id="main-nav" className="main-nav">
-                                    <ul id="menu-primary-menu" className="menu">
-                                        <li className="menu-item menu-item-has-children  current-menu-item">
-                                            <a href="home_02.html#">Home</a>
-                                        </li>
-                                        <li className="menu-item menu-item-has-children">
-                                            <a href="home_02.html#">Pages</a>
-                                            <ul className="sub-menu">
-                                                <li className="menu-item"><a href="/About">About</a></li>
-                                                <li className="menu-item"><a href="/Faqs">Faqs</a></li>
-                                                <li className="menu-item"><a href="/admin/">Admin</a></li>
-                                            </ul>
-                                        </li>
-                                        <li className="menu-item menu-item-has-children">
-                                            <a href="/Menu">Menu</a>
-                                        </li>
-                                        <li className="menu-item menu-item-has-children">
-                                            <a href="/Contact">Contact</a>
-                                        </li>
-                                    </ul>
-                                </nav>{/* /#main-nav */}
-                                {/* Auth buttons */}
+<nav id="main-nav" className="main-nav">
+  <ul id="menu-primary-menu" className="menu">
+
+    <li className="menu-item current-menu-item">
+      <a href="/">Home</a>
+    </li>
+
+    <li className="menu-item">
+      <a href="/Menu">Menu</a>
+    </li>
+
+    <li className="menu-item">
+      <a href="/Reservations">Reservations</a>
+    </li>
+
+    <li className="menu-item">
+      <a href="/About">About Us</a>
+    </li>
+
+    <li className="menu-item">
+      <a href="/Contact">Contact</a>
+    </li>
+
+    <li className="menu-item menu-item-has-children">
+      <a href="#">More</a>
+      <ul className="sub-menu">
+        <li className="menu-item">
+          <a href="/Faqs">FAQs</a>
+        </li>
+
+        <li className="menu-item">
+          <a href="/TrackOrder">Track Order</a>
+        </li>
+
+        <li className="menu-item">
+          <a href="/Profile">My Account</a>
+        </li>
+
+        <li className="menu-item">
+          <a href="/admin">Admin</a>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+</nav>                                {/* Auth buttons */}
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                                   {user ? (
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
