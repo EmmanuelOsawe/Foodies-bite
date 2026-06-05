@@ -96,35 +96,34 @@ function Home() {
                 <div>
                     <div id="wrapper">
                     </div>
-                    <div className="top-bar-2">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="top-header">
-                                        <div className="contact-left">
-                                            <div className="icon"><i className="fa fa-utensils" /></div>
-                                            <div className="t">
-                                                <p>Foodies-bites123@gmail.com </p>
-                                                <p>+234 803 456 7890</p>
-                                            </div>
-                                        </div>
-                                        <div className="header__logo">
-                                            <a href="index.html"><img src="assets/images/logo/logobgrm" alt /></a>
-                                        </div>
-                                        <div className="contact-right">
-                                            <div className="icon"><i className="fa-solid fa-location-dot" /></div>
-                                            <div className="t">
-                                                <p>Behind Berith Square, 1st Avenue, Gwarinpa
-                                                </p>
-                                                <p>Abuja, Nigeria</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* end Top bar */}
+<div className="top-bar-2">
+  <div className="container">
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        color: "black",
+        padding: "8px 0",
+        fontSize: "14px"
+      }}
+    >
+      <div style={{ display: "flex", gap: "25px" }}>
+        <span>
+          <i className="fa-solid fa-phone" /> +234 803 456 7890
+        </span>
+
+        <span>
+          <i className="fa-solid fa-envelope" /> foodiesbite123@gmail.com
+        </span>
+      </div>
+
+      <div>
+        <i className="fa-solid fa-clock" /> Open Daily: 8AM - 11PM
+      </div>
+    </div>
+  </div>
+</div>                    {/* end Top bar */}
                     {/* Header */}
                     <header id="header_main" className="header style-2">
                         <div className="container">
