@@ -290,7 +290,7 @@ function Home() {
                                         </div>
                                     </div>
                                 </div>
-<div className="col-lg-5 col-md-12">
+<div className="col-lg-5 col-md-12" >
   <div className="opening-book">
     {resSuccess ? (
       <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
