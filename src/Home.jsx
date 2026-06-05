@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import './App.css';
 import { makeReservation, loginUser, registerUser, saveAuth, clearAuth, getStoredUser, isLoggedIn } from './api';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
 function Home() {
   const [user, setUser] = useState(getStoredUser());
@@ -177,57 +183,81 @@ function Home() {
                         </div>
                     </header>
                     {/* end Header */}
-                    <div className="swiper mySwiper ">
-                        <div className="swiper-wrapper">
-                            <div className="swiper-slide">
-                                <div className="overlay">
-                                    <img src="assets/images/slider/img_slider_2.jpg" alt />
-                                </div>
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col-md-12">
-                                            <div className="box-slider">
-                                                <div className="content-box center style-2">
-                                                    <h2 className="title">It’s time to enjoy <br /> the finer things in life. </h2>
-                                                    <p className="sub-title">Craving some delicious Paris food? Maybe you’re in the mood
-                                                        for a juicy steak? No matter what <br /> kind of meal you have in mind.</p>
-                                                    <div className="wrap-btn center st2">
-                                                        <a href="menu_list.html" className="tf-button style2">
-                                                            discovery menu
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="swiper-slide">
-                                <div className="overlay">
-                                    <img src="assets/images/slider/img_slider_22.jpg" alt />
-                                </div>
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col-md-12">
-                                            <div className="box-slider">
-                                                <div className="content-box center style-2">
-                                                    <h2 className="title">Foodies welcome <br /> Taste the difference</h2>
-                                                    <p className="sub-title">Craving some delicious Paris food? Maybe you’re in the mood
-                                                        for a juicy steak? No matter what <br /> kind of meal you have in mind.</p>
-                                                    <div className="wrap-btn center st2">
-                                                        <a href="menu_list.html" className="tf-button style2">
-                                                            discovery menu
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <section className="opening">
+
+<Swiper
+  modules={[Navigation, Pagination, Autoplay]}
+  slidesPerView={1}
+  loop={true}
+  autoplay={{
+    delay: 5000,
+    disableOnInteraction: false,
+  }}
+  pagination={{ clickable: true }}
+  navigation
+  className="mySwiper"
+>
+  <SwiperSlide>
+    <div className="overlay">
+      <img src="assets/images/slider/img_slider_2.jpg" alt="" />
+    </div>
+
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="box-slider">
+            <div className="content-box center style-2">
+              <h2 className="title">
+                It’s time to enjoy <br /> the finer things in life.
+              </h2>
+
+              <p className="sub-title">
+                Craving some delicious food? Maybe you're in the mood
+                for a juicy steak? No matter what kind of meal you have in mind.
+              </p>
+
+              <div className="wrap-btn center st2">
+                <a href="/menu" className="tf-button style2">
+                  Discover Menu
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </SwiperSlide>
+
+  <SwiperSlide>
+    <div className="overlay">
+      <img src="assets/images/slider/img_slider_22.jpg" alt="" />
+    </div>
+
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="box-slider">
+            <div className="content-box center style-2">
+              <h2 className="title">
+                Foodies Welcome <br /> Taste The Difference
+              </h2>
+
+              <p className="sub-title">
+                Experience authentic Nigerian dishes made with fresh
+                ingredients and unforgettable flavors.
+              </p>
+
+              <div className="wrap-btn center st2">
+                <a href="/menu" className="tf-button style2">
+                  Discover Menu
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </SwiperSlide>
+</Swiper>                    <section className="opening">
                         <div className="img"><img src="assets/images/section/opening.png" alt /></div>
                         <div className="container">
                             <div className="row">
