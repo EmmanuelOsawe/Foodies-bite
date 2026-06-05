@@ -2,12 +2,12 @@ import { useState } from 'react';
 import './App.css';
 import { makeReservation, loginUser, registerUser, saveAuth, clearAuth, getStoredUser, isLoggedIn } from './api';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
 
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 function Home() {
   const [user, setUser] = useState(getStoredUser());
   const [authOpen, setAuthOpen] = useState(false);
@@ -185,31 +185,92 @@ function Home() {
                     {/* end Header */}
 
 <Swiper
-  modules={[Navigation, Pagination, Autoplay]}
-  slidesPerView={1}
+  modules={[Autoplay, Pagination, EffectFade]}
+  effect="fade"
   loop={true}
+  speed={1000}
   autoplay={{
-    delay: 5000,
+    delay: 4000,
     disableOnInteraction: false,
   }}
-  pagination={{ clickable: true }}
-  navigation
+  pagination={{
+    clickable: true,
+  }}
   className="mySwiper"
 >
   <SwiperSlide>
     <div className="overlay">
-      <img src="assets/images/slider/bg1.jpg" alt="" />
+      <img
+        src="assets/images/slider/img_slider_2.jpg"
+        alt="Foodies Bite"
+      />
     </div>
 
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="box-slider">
+            <div className="content-box center style-2">
+              <h2 className="title">
+                Authentic Nigerian <br />
+                Flavours Await
+              </h2>
+
+              <p className="sub-title">
+                Enjoy freshly prepared Jollof Rice, Suya,
+                Pounded Yam, Egusi Soup and more from
+                the comfort of your home.
+              </p>
+
+              <div className="wrap-btn center st2">
+                <a href="/menu" className="tf-button style2">
+                  Discover Menu
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </SwiperSlide>
 
   <SwiperSlide>
     <div className="overlay">
-      <img src="assets/images/slider/bg2.png" alt="" />
+      <img
+        src="assets/images/slider/img_slider_22.jpg"
+        alt="Foodies Bite"
+      />
     </div>
 
+    <div className="container">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="box-slider">
+            <div className="content-box center style-2">
+              <h2 className="title">
+                Taste Nigeria <br />
+                One Plate At A Time
+              </h2>
+
+              <p className="sub-title">
+                Bringing families and friends together
+                through delicious Nigerian cuisine made
+                with fresh ingredients and rich traditions.
+              </p>
+
+              <div className="wrap-btn center st2">
+                <a href="/menu" className="tf-button style2">
+                  Order Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </SwiperSlide>
-</Swiper>                    <section className="opening">
+</Swiper>
+<section className="opening">
                         <div className="img"><img src="assets/images/section/opening.png" alt /></div>
                         <div className="container">
                             <div className="row">
