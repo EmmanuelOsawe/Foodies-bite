@@ -212,12 +212,23 @@ function Home() {
   <SwiperSlide>
     <div className="overlay">
       <img
-        src="assets/images/slider/bg2.png"
+        src="assets/images/slider/bgr2.jpg"
         alt="Foodies Bite"
       />
-    </div>
+    </div>  
 
   </SwiperSlide>
+
+  <SwiperSlide>
+    <div className="overlay">
+      <img
+        src="assets/images/slider/bgr3.jpg"
+        alt="Foodies Bite"
+      />
+    </div>  
+
+  </SwiperSlide>
+
 </Swiper>
 <section className="opening">
                         <div className="img"><img src="assets/images/section/opening.png" alt /></div>
