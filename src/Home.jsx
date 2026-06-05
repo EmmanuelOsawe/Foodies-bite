@@ -380,8 +380,8 @@ function Home() {
                         </div>
                     </section>
                     <section className="chef-restaurant">
-                        <img className="item-right" src="assets/images/section/menu10.png" alt data-aos-duration={1000} data-aos="fade-left" />
-                        <img className="item-left" src="assets/images/section/menu11.png" alt data-aos-duration={1000} data-aos="fade-right" />
+                        <img className="item-right" src="assets/images/section/rice&crips.jpg" alt data-aos-duration={1000} data-aos="fade-left" />
+                        <img className="item-left" src="assets/images/section/semo&veg.jpg" alt data-aos-duration={1000} data-aos="fade-right" />
                         <div className="container">
                             <div className="row">
                                 <div className="menu-content">
