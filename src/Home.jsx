@@ -96,16 +96,16 @@ function Home() {
                 <div>
                     <div id="wrapper">
                     </div>
-<div className="top-bar-2">
+<div className="top-bar-2" style={{ background: 'green', zIndex: 999 }}>
   <div className="container">
     <div
       style={{
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        color: "black",
+        color: "white",
         padding: "8px 0",
-        fontSize: "14px"
+        fontSize: "14px",
       }}
     >
       <div style={{ display: "flex", gap: "25px" }}>
@@ -125,7 +125,7 @@ function Home() {
   </div>
 </div>                    {/* end Top bar */}
                     {/* Header */}
-                    <header id="header_main" className="header style-2">
+                    <header id="header_main" className="header style-2" style={{ background: 'green', color: 'white', zIndex: 999 }}>
                         <div className="container">
                             <div id="site-header-inner" className="site-header-inner">
                                 <div className="search-form">
@@ -140,49 +140,51 @@ function Home() {
 <nav id="main-nav" className="main-nav">
   <ul id="menu-primary-menu" className="menu">
 
-    <li className="menu-item current-menu-item">
-      <a href="/">Home</a>
+    <li className="menu-item current-menu-item" >
+      <a href="/" style={{ color: 'rgb(234, 234, 234)', fontWeight: 700 }}>Home</a>
     </li>
 
     <li className="menu-item">
-      <a href="/Menu">Menu</a>
+      <a href="/Menu" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Menu</a>
     </li>
 
     <li className="menu-item">
-      <a href="/Reservations">Reservations</a>
+      <a href="/Reservations" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Reservations</a>
     </li>
 
     <li className="menu-item">
-      <a href="/About">About Us</a>
+      <a href="/About" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>About Us</a>
     </li>
 
     <li className="menu-item">
-      <a href="/Contact">Contact</a>
+      <a href="/Contact" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Contact</a>
     </li>
 
     <li className="menu-item menu-item-has-children">
-      <a href="#">More</a>
+      <a href="#" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>More</a>
       <ul className="sub-menu">
         <li className="menu-item">
-          <a href="/Faqs">FAQs</a>
+          <a href="/Faqs" style={{ color: 'black', fontWeight: 200 }}>FAQs</a>
         </li>
 
         <li className="menu-item">
-          <a href="/TrackOrder">Track Order</a>
+          <a href="/TrackOrder" style={{ color: 'black', fontWeight: 200 }}>Track Order</a>
         </li>
 
         <li className="menu-item">
-          <a href="/Profile">My Account</a>
+          <a href="/Profile" style={{ color: 'black', fontWeight: 200 }}>My Account</a>
         </li>
 
         <li className="menu-item">
-          <a href="/admin">Admin</a>
+          <a href="/admin" style={{ color: 'black', fontWeight: 200 }}>Admin</a>
         </li>
       </ul>
     </li>
 
   </ul>
-</nav>                                {/* Auth buttons */}
+</nav>        
+
+                        {/* Auth buttons */}
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                                   {user ? (
                                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
