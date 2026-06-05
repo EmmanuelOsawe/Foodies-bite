@@ -201,73 +201,22 @@ function Home() {
   <SwiperSlide>
     <div className="overlay">
       <img
-        src="assets/images/slider/img_slider_2.jpg"
+        src="assets/images/slider/bg1.jpg"
         alt="Foodies Bite"
       />
     </div>
 
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <div className="box-slider">
-            <div className="content-box center style-2">
-              <h2 className="title">
-                Authentic Nigerian <br />
-                Flavours Await
-              </h2>
 
-              <p className="sub-title">
-                Enjoy freshly prepared Jollof Rice, Suya,
-                Pounded Yam, Egusi Soup and more from
-                the comfort of your home.
-              </p>
-
-              <div className="wrap-btn center st2">
-                <a href="/menu" className="tf-button style2">
-                  Discover Menu
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </SwiperSlide>
 
   <SwiperSlide>
     <div className="overlay">
       <img
-        src="assets/images/slider/img_slider_22.jpg"
+        src="assets/images/slider/bg2.png"
         alt="Foodies Bite"
       />
     </div>
 
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <div className="box-slider">
-            <div className="content-box center style-2">
-              <h2 className="title">
-                Taste Nigeria <br />
-                One Plate At A Time
-              </h2>
-
-              <p className="sub-title">
-                Bringing families and friends together
-                through delicious Nigerian cuisine made
-                with fresh ingredients and rich traditions.
-              </p>
-
-              <div className="wrap-btn center st2">
-                <a href="/menu" className="tf-button style2">
-                  Order Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </SwiperSlide>
 </Swiper>
 <section className="opening">
