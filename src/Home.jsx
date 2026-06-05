@@ -184,52 +184,52 @@ function Home() {
                     </header>
                     {/* end Header */}
 
-<Swiper
-  modules={[Autoplay, Pagination, EffectFade]}
-  effect="fade"
-  loop={true}
-  speed={1000}
-  autoplay={{
-    delay: 4000,
-    disableOnInteraction: false,
-  }}
-  pagination={{
-    clickable: true,
-  }}
-  className="mySwiper"
->
-  <SwiperSlide>
-    <div className="overlay">
-      <img
-        src="assets/images/slider/bg1.jpg"
-        alt="Foodies Bite"
-      />
-    </div>
+                    <Swiper
+                        modules={[Autoplay, Pagination, EffectFade]}
+                        effect="fade"
+                        loop={true}
+                        speed={1000}
+                        autoplay={{
+                            delay: 4000,
+                            disableOnInteraction: false,
+                        }}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        className="mySwiper"
+                    >
+                        <SwiperSlide>
+                            <div className="overlay">
+                                <img
+                                    src="assets/images/slider/bg1.jpg"
+                                    alt="Foodies Bite"
+                                />
+                            </div>
 
 
-  </SwiperSlide>
+                        </SwiperSlide>
 
-  <SwiperSlide>
-    <div className="overlay">
-      <img
-        src="assets/images/slider/bgr2.jpg"
-        alt="Foodies Bite"
-      />
-    </div>  
+                        <SwiperSlide>
+                            <div className="overlay">
+                                <img
+                                    src="assets/images/slider/bgr2.jpg"
+                                    alt="Foodies Bite"
+                                />
+                            </div>
 
-  </SwiperSlide>
+                        </SwiperSlide>
 
-  <SwiperSlide>
-    <div className="overlay">
-      <img
-        src="assets/images/slider/bgr3.jpg"
-        alt="Foodies Bite"
-      />
-    </div>  
+                        <SwiperSlide>
+                            <div className="overlay">
+                                <img
+                                    src="assets/images/slider/bgr3.jpg"
+                                    alt="Foodies Bite"
+                                />
+                            </div>
 
-  </SwiperSlide>
+                        </SwiperSlide>
 
-</Swiper>
+                    </Swiper>
 <section className="opening">
                         <div className="img"><img src="assets/images/section/opening.png" alt /></div>
                         <div className="container">
