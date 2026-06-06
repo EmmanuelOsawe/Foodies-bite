@@ -106,3 +106,38 @@
     transform: translateY(0);
   }
 }
+
+
+.desktop-foods {
+  display: grid;
+}
+
+.mobile-food-slider {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-foods {
+    display: none;
+  }
+
+  .mobile-food-slider {
+    display: block;
+  }
+
+  .food-card {
+    animation: fadeIn 0.5s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.4;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
