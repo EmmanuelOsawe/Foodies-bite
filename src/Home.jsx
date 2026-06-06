@@ -553,7 +553,7 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                    
+
                     <section className="s-formmail">
                         <div className="container">
                             <div className="row">
@@ -595,7 +595,7 @@ function Home() {
                                                     </span>
                                                     Foodies-bites123@gmail.com
                                                 </p>
-                                                <p className="cl">978-212-8600</p>
+                                                <p className="cl">+234 803 456 7890</p>
                                             </li>
                                         </ul>
                                     </div>
@@ -629,12 +629,10 @@ function Home() {
                             </div>
                             <div className="row bottom-footer">
                                 <div className="bottom-main">
-                                    <p>© Copyright Themesflat for Restaurant &amp; Bistro</p>
                                     <ul>
                                         <li><a href="about.html">ABOUT US</a></li>
                                         <li><a href="menu_list.html">MENU</a></li>
-                                        <li><a href="blog_right_sidebar.html">RESERVATION</a></li>
-                                        <li><a href="contact_01.html">CONTACT US</a></li>
+                                        <li><a href="/Contact">CONTACT US</a></li>
                                     </ul>
                                 </div>
                             </div>
