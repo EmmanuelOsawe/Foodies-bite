@@ -212,6 +212,8 @@ function Home() {
                     </header>
                     {/* end Header */}
 
+                    <br />
+
                     <Swiper
                         modules={[Autoplay, Pagination, EffectFade]}
                         effect="fade"
