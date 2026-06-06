@@ -99,7 +99,7 @@ function Home() {
                 <div>
                     <div id="wrapper">
                     </div>
-<div className="top-bar-2" style={{ background: 'green', zIndex: 999 }}>
+<div className="top-bar-2" style={{ background: 'blue', zIndex: 999 }}>
   <div className="container">
     <div
       style={{
@@ -128,7 +128,7 @@ function Home() {
   </div>
 </div>                    {/* end Top bar */}
                     {/* Header */}
-                    <header id="header_main" className="header style-2" style={{ background: 'green', color: 'white', zIndex: 999 }}>
+                    <header id="header_main" className="header style-2" style={{ background: 'blue', color: 'white', zIndex: 999 }}>
                         <div className="container">
                             <div id="site-header-inner" className="site-header-inner">
                                 <div className="search-form">
