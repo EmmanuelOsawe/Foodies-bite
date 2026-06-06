@@ -433,38 +433,6 @@ function Home() {
                     
                     <PromiseSection />
 
-                    <div className="s-couter">
-                        <div className="container">
-                            <div className="row">
-                                <div className="couter-content">
-                                    <div className="couter-box counter">
-                                        <div className="number-content">
-                                            <span className="count-number" data-to={240} data-speed={2000} data-inviewport="yes">240</span>
-                                        </div>
-                                        <p className="text">Clients Every Day</p>
-                                    </div>
-                                    <div className="couter-box counter">
-                                        <div className="number-content">
-                                            <span className="count-number" data-to={180} data-speed={2000} data-inviewport="yes">180</span>
-                                        </div>
-                                        <p className="text">Great Moments</p>
-                                    </div>
-                                    <div className="couter-box counter">
-                                        <div className="number-content">
-                                            <span className="count-number" data-to={50} data-speed={2000} data-inviewport="yes">50</span>
-                                        </div>
-                                        <p className="text"> prestigious award </p>
-                                    </div>
-                                    <div className="couter-box counter">
-                                        <div className="number-content">
-                                            <span className="count-number" data-to={23} data-speed={2000} data-inviewport="yes">23</span>
-                                        </div>
-                                        <p className="text">year of operation </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <section className="event">
                         <div className="shape" />
                         <div className="container">
@@ -604,26 +572,6 @@ function Home() {
                                             </div>
                                             <div className="swiper-pagination testimonials-pagination" />
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section className="vouchers">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="vouchers-main">
-                                        <div className="left">
-                                            <div className="icon" data-aos-duration={1000} data-aos="fade-right"><img src="assets/images/icon/gift-card.png" alt /></div>
-                                            <div className="content">
-                                                <h4 data-aos-duration={1000} data-aos="fade-up">Gift vouchers</h4>
-                                                <p data-aos-duration={1000} data-aos="fade-up">Offer an unforgettable experience at our restaurant to your dear ones.
-                                                    Suspendisse mattis tincidunt ornare.Phasellus at est bibendum ante.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <a href="home_02.html#" className="tf-button style3">buy gift card now </a>
                                     </div>
                                 </div>
                             </div>
