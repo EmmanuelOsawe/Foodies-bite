@@ -1,0 +1,142 @@
+/* ====================================
+   FOODIES-BITE TESTIMONIALS (LUXURY)
+==================================== */
+
+.luxury-testimonials {
+  padding: 120px 0;
+  background: #faf8f5;
+}
+
+.testimonials-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ====================================
+   IMAGE SIDE
+==================================== */
+
+.testimonials-image {
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.testimonials-image img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.testimonials-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ====================================
+   CARD STYLE
+==================================== */
+
+.testimonial-card {
+  background: white;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.quote-icon {
+  width: 40px;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.testimonial-card h3 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #2f1a0d;
+}
+
+.testimonial-card p {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+/* ====================================
+   FOOTER
+==================================== */
+
+.testimonial-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.testimonial-footer h5 {
+  font-size: 15px;
+  color: #333;
+}
+
+.stars {
+  color: #f4a716;
+  font-size: 16px;
+}
+
+/* ====================================
+   PAGINATION
+==================================== */
+
+.testimonial-pagination {
+  margin-top: 20px;
+}
+
+/* ====================================
+   RESPONSIVE
+==================================== */
+
+/* TABLET */
+@media (max-width: 991px) {
+  .testimonials-wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .testimonials-image img {
+    height: 400px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .luxury-testimonials {
+    padding: 80px 20px;
+  }
+
+  .testimonial-card {
+    padding: 25px;
+  }
+
+  .testimonial-card h3 {
+    font-size: 22px;
+  }
+
+  .testimonial-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+/* SMALL PHONES */
+@media (max-width: 480px) {
+  .testimonials-image img {
+    height: 280px;
+  }
+
+  .testimonial-card p {
+    font-size: 14px;
+  }
+}
