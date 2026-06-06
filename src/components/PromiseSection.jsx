@@ -4,8 +4,8 @@ import "../styles/PromiseSection.css";
 export default function PromiseSection() {
   const [zoomImage, setZoomImage] = useState(null);
 
-  const leftImage = "assets/images/section/chef3.jpg";
-  const rightImage = "assets/images/section/chef4.jpg";
+  const leftImage = "assets/images/food/rricestew.jpg";
+  const rightImage = "assets/images/food/r-customers.jpg";
 
   return (
     <section className="promise-section">
