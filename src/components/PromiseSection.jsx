@@ -1,4 +1,4 @@
-import "./PromiseSection.css";
+import "../styles/PromiseSection.css";
 
 export default function PromiseSection() {
   return (
