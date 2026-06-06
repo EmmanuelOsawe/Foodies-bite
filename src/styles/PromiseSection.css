@@ -27,6 +27,7 @@
   border-radius: 24px;
   position: relative;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  width: 100%;
 }
 
 .promise-image img {
@@ -35,7 +36,6 @@
   object-fit: cover;
   display: block;
 
-  /* Faster zoom */
   transition: transform 1.2s ease-in-out;
 }
 
@@ -139,10 +139,14 @@
 }
 
 /* ====================================
-   RESPONSIVE
+   LARGE TABLETS
 ==================================== */
 
 @media (max-width: 1200px) {
+  .promise-container {
+    gap: 30px;
+  }
+
   .promise-title {
     font-size: 44px;
   }
@@ -152,52 +156,116 @@
   }
 }
 
+/* ====================================
+   TABLETS
+==================================== */
+
 @media (max-width: 991px) {
+  .promise-section {
+    padding: 90px 20px;
+  }
+
   .promise-container {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 35px;
+    padding: 0;
   }
 
   .promise-content {
     order: 2;
   }
 
-  .promise-image img {
-    height: 350px;
-  }
-
   .promise-title {
     font-size: 38px;
   }
 
+  .promise-text {
+    font-size: 16px;
+  }
+
   .promise-features {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .promise-image img {
+    height: 420px;
   }
 }
 
-@media (max-width: 576px) {
+/* ====================================
+   MOBILE
+==================================== */
+
+@media (max-width: 768px) {
   .promise-section {
-    padding: 80px 20px;
+    padding: 70px 15px;
   }
 
   .promise-container {
-    padding: 0;
+    gap: 25px;
   }
 
   .promise-title {
     font-size: 32px;
+    line-height: 1.25;
+  }
+
+  .promise-subtitle {
+    font-size: 12px;
+    letter-spacing: 3px;
   }
 
   .promise-text {
     font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .promise-image {
+    border-radius: 18px;
+  }
+
+  .promise-image img {
+    height: 300px;
   }
 
   .promise-btn {
     width: 100%;
     text-align: center;
   }
+}
+
+/* ====================================
+   SMALL PHONES
+==================================== */
+
+@media (max-width: 480px) {
+  .promise-section {
+    padding: 60px 12px;
+  }
+
+  .promise-title {
+    font-size: 28px;
+  }
+
+  .promise-text {
+    font-size: 14px;
+  }
+
+  .promise-image {
+    border-radius: 14px;
+  }
 
   .promise-image img {
-    height: 280px;
+    height: 240px;
+  }
+
+  .feature-item p {
+    font-size: 14px;
+  }
+
+  .promise-btn {
+    padding: 14px 20px;
+    font-size: 14px;
   }
 }

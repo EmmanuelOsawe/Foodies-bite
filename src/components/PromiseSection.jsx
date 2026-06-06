@@ -1,74 +1,81 @@
+import { useState } from "react";
 import "../styles/PromiseSection.css";
 
 export default function PromiseSection() {
+  const [zoomImage, setZoomImage] = useState(null);
+
+  const leftImage = "assets/images/section/chef3.jpg";
+  const rightImage = "assets/images/section/chef4.jpg";
+
   return (
     <section className="promise-section">
       <div className="promise-container">
 
-        {/* Left Image */}
+        {/* LEFT IMAGE */}
         <div className="promise-image">
           <img
-            src="assets/images/food/rricestew.jpg"
-            alt="Fresh Nigerian Food"
+            src={leftImage}
+            alt="Chef Cooking"
+            onClick={() => setZoomImage(leftImage)}
           />
         </div>
 
-        {/* Content */}
+        {/* CONTENT */}
         <div className="promise-content">
-          <span className="promise-subtitle">
-            OUR PROMISE
-          </span>
+          <span className="promise-subtitle">OUR CHEF</span>
 
           <h2 className="promise-title">
-            Quality Food.
-            <br />
-            Exceptional Service.
+            Our Culinary Philosophy
           </h2>
 
           <p className="promise-text">
-            At Foodies-Bite, we believe every meal should be memorable.
-            Our team is committed to serving fresh, delicious Nigerian
-            dishes while providing a welcoming experience for every guest.
+            Simple and balanced. We bring together flavors and specialties
+            from Nigeria and beyond to create a unique dining experience.
           </p>
 
           <div className="promise-features">
-
             <div className="feature-item">
-              <span>✓</span>
-              <p>Freshly Prepared Daily</p>
+              <span>1</span>
+              <p>Fresh Ingredients</p>
             </div>
 
             <div className="feature-item">
-              <span>✓</span>
-              <p>Fast & Reliable Delivery</p>
+              <span>2</span>
+              <p>Authentic Taste</p>
             </div>
 
             <div className="feature-item">
-              <span>✓</span>
-              <p>Premium Ingredients</p>
+              <span>3</span>
+              <p>Expert Chefs</p>
             </div>
 
             <div className="feature-item">
-              <span>✓</span>
-              <p>Friendly Customer Service</p>
+              <span>4</span>
+              <p>Fast Service</p>
             </div>
-
           </div>
 
-          <a href="/Menu" className="promise-btn">
+          <a href="/menu" className="promise-btn">
             Explore Menu
           </a>
         </div>
 
-        {/* Right Image */}
+        {/* RIGHT IMAGE */}
         <div className="promise-image">
           <img
-            src="assets/images/food/r-customers.jpg"
-            alt="Foodies-Bite Dining"
+            src={rightImage}
+            alt="Dining Experience"
+            onClick={() => setZoomImage(rightImage)}
           />
         </div>
-
       </div>
+
+      {/* LIGHTBOX */}
+      {zoomImage && (
+        <div className="image-lightbox" onClick={() => setZoomImage(null)}>
+          <img src={zoomImage} alt="Zoomed view" />
+        </div>
+      )}
     </section>
   );
 }
