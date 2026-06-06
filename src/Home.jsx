@@ -4,6 +4,7 @@ import { makeReservation, loginUser, registerUser, saveAuth, clearAuth, getStore
 import { Swiper, SwiperSlide } from "swiper/react";
 import FoodMenu from "./components/FoodMenu";
 import PromiseSection from "./components/PromiseSection";
+import Testimonial from "./components/Testimonial";
 
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 
@@ -496,87 +497,9 @@ function Home() {
                             </div>
                         </div>
                     </section>
-                    <section className="testimonials">
-                        <div className="container-fluid">
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="testimonials-main">
-                                        <div className="testimonials-img">
-                                            <img src="assets/images/section/testimonial.jpg" alt />
-                                        </div>
-                                        <div className="swiper testimonialSwiper">
-                                            <div className="swiper-wrapper">
-                                                <div className="swiper-slide">
-                                                    <div className="testimonials-content">
-                                                        <img src="assets/images/icon/quote.png" alt />
-                                                        <h4>Good restaurant, delicious food, classy atmosphere
-                                                        </h4>
-                                                        <p>Please thank your team for their professional, efficient and friendly
-                                                            service on Sat night. The chefs smashed it and the drinks flowed freely!
-                                                            Everyone was impressed and were quite taken with how cost effective it
-                                                            was to have Ochre do what you did.</p>
-                                                        <div className="d-flex">
-                                                            <h5>Margaret - Food critic</h5>
-                                                            <ul className="rating">
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="swiper-slide">
-                                                    <div className="testimonials-content">
-                                                        <img src="assets/images/icon/quote.png" alt />
-                                                        <h4>Good restaurant, delicious food, classy atmosphere
-                                                        </h4>
-                                                        <p>Please thank your team for their professional, efficient and friendly
-                                                            service on Sat night. The chefs smashed it and the drinks flowed freely!
-                                                            Everyone was impressed and were quite taken with how cost effective it
-                                                            was to have Ochre do what you did.</p>
-                                                        <div className="d-flex">
-                                                            <h5>Margaret - Food critic</h5>
-                                                            <ul className="rating">
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="swiper-slide">
-                                                    <div className="testimonials-content">
-                                                        <img src="assets/images/icon/quote.png" alt />
-                                                        <h4>Good restaurant, delicious food, classy atmosphere
-                                                        </h4>
-                                                        <p>Please thank your team for their professional, efficient and friendly
-                                                            service on Sat night. The chefs smashed it and the drinks flowed freely!
-                                                            Everyone was impressed and were quite taken with how cost effective it
-                                                            was to have Ochre do what you did.</p>
-                                                        <div className="d-flex">
-                                                            <h5>Margaret - Food critic</h5>
-                                                            <ul className="rating">
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                                <li><i className="fa fa-star" /></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="swiper-pagination testimonials-pagination" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+
+                    <Testimonial />
+
                     <div className="gallery-ig">
                         <div className="container">
                             <div className="row">
@@ -630,6 +553,7 @@ function Home() {
                             </div>
                         </div>
                     </div>
+                    
                     <section className="s-formmail">
                         <div className="container">
                             <div className="row">

@@ -1,3 +1,8 @@
+import "../styles/Testimonial.css";
+
+export default function Testimonial() {
+
+  return (
 <section className="testimonials luxury-testimonials">
   <div className="container">
 
@@ -79,4 +84,6 @@
     </div>
 
   </div>
-</section>
+</section>  );
+}  
+
