@@ -9,16 +9,16 @@ const categories = [
 ];
 
 const foods = [
-  { id: 1, name: "Jollof Rice", category: "rice", price: "₦2500", img: "/img/jollof.jpg" },
-  { id: 2, name: "Fried Rice", category: "rice", price: "₦2800", img: "/img/friedrice.jpg" },
+  { id: 1, name: "Jollof Rice", category: "rice", price: "₦2500", img: "../images/food/jollof.jpg" },
+  { id: 2, name: "Fried Rice", category: "rice", price: "₦2800", img: "../images/food/friedrice.jpg" },
 
-  { id: 3, name: "Egusi Soup", category: "soup", price: "₦3000", img: "/img/egusi.jpg" },
-  { id: 4, name: "Okra Soup", category: "soup", price: "₦3000", img: "/img/okra.jpg" },
+  { id: 3, name: "Egusi Soup", category: "soup", price: "₦3000", img: "../images/food/ebarmv.png" },
+  { id: 4, name: "Okra Soup", category: "soup", price: "₦3000", img: "../images/food/okrobgrmv.png" },
 
-  { id: 5, name: "Pounded Yam", category: "swallow", price: "₦2000", img: "/img/yam.jpg" },
-  { id: 6, name: "Eba", category: "swallow", price: "₦1500", img: "/img/eba.jpg" },
+  { id: 5, name: "Pounded Yam", category: "swallow", price: "₦2000", img: "../images/food/saermv.png" },
+  { id: 6, name: "Eba", category: "swallow", price: "₦1500", img: "../images/food/ebarmv.png" },
 
-  { id: 7, name: "Grilled Chicken", category: "grill", price: "₦4000", img: "/img/chicken.jpg" },
+  { id: 7, name: "Grilled Chicken", category: "grill", price: "₦4000", img: "../images/food/chicken.jpg" },
 ];
 
 export default function FoodMenu() {
