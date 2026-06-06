@@ -178,6 +178,8 @@ function Contact() {
         </div>
       </header>
 
+      <br />
+
       <section className="page-title p-contact">
         <div className="container">
           <div className="row">
