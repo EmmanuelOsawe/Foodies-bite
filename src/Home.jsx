@@ -11,84 +11,85 @@ import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+
 function Home() {
-  const [user, setUser] = useState(getStoredUser());
-  const [authOpen, setAuthOpen] = useState(false);
-  const [authTab, setAuthTab] = useState('login');
-  const [authForm, setAuthForm] = useState({ name: '', email: '', password: '' });
-  const [authLoading, setAuthLoading] = useState(false);
-  const [authError, setAuthError] = useState('');
+    const [user, setUser] = useState(getStoredUser());
+    const [authOpen, setAuthOpen] = useState(false);
+    const [authTab, setAuthTab] = useState('login');
+    const [authForm, setAuthForm] = useState({ name: '', email: '', password: '' });
+    const [authLoading, setAuthLoading] = useState(false);
+    const [authError, setAuthError] = useState('');
 
-  // Reservation state
-  const [resForm, setResForm] = useState({ name: '', phone: '', time: '', guests: '2', date: '' });
-  const [resLoading, setResLoading] = useState(false);
-  const [resSuccess, setResSuccess] = useState(false);
-  const [resError, setResError] = useState('');
+    // Reservation state
+    const [resForm, setResForm] = useState({ name: '', phone: '', time: '', guests: '2', date: '' });
+    const [resLoading, setResLoading] = useState(false);
+    const [resSuccess, setResSuccess] = useState(false);
+    const [resError, setResError] = useState('');
 
-  const handleAuth = async (e) => {
-    e.preventDefault();
-    setAuthError(''); setAuthLoading(true);
-    try {
-      let data;
-      if (authTab === 'login') {
-        data = await loginUser(authForm.email, authForm.password);
-      } else {
-        const fd = new FormData();
-        fd.append('name', authForm.name);
-        fd.append('email', authForm.email);
-        fd.append('password', authForm.password);
-        data = await registerUser(fd);
-      }
-      saveAuth(data.token, data.user);
-      setUser(data.user);
-      setAuthOpen(false);
-    } catch (err) { setAuthError(err.message); }
-    setAuthLoading(false);
-  };
+    const handleAuth = async (e) => {
+        e.preventDefault();
+        setAuthError(''); setAuthLoading(true);
+        try {
+            let data;
+            if (authTab === 'login') {
+                data = await loginUser(authForm.email, authForm.password);
+            } else {
+                const fd = new FormData();
+                fd.append('name', authForm.name);
+                fd.append('email', authForm.email);
+                fd.append('password', authForm.password);
+                data = await registerUser(fd);
+            }
+            saveAuth(data.token, data.user);
+            setUser(data.user);
+            setAuthOpen(false);
+        } catch (err) { setAuthError(err.message); }
+        setAuthLoading(false);
+    };
 
-  const handleLogout = () => { clearAuth(); setUser(null); };
+    const handleLogout = () => { clearAuth(); setUser(null); };
 
-  const handleReservation = async (e) => {
-    e.preventDefault();
-    setResError(''); setResLoading(true);
-    if (!isLoggedIn()) {
-      setResError('Please sign in first to book a table.');
-      setResLoading(false);
-      setAuthOpen(true);
-      return;
-    }
-    try {
-      await makeReservation({
-        date: resForm.date,
-        time: resForm.time,
-        guests: Number(resForm.guests),
-        phone: resForm.phone || null,   // pass form phone for SMS
-        name: resForm.name,             // pass form name for notification
-      });
-      setResSuccess(true);
-      setResForm({ name: '', phone: '', time: '', guests: '2', date: '' });
-    } catch (err) { setResError(err.message); }
-    setResLoading(false);
-  };
+    const handleReservation = async (e) => {
+        e.preventDefault();
+        setResError(''); setResLoading(true);
+        if (!isLoggedIn()) {
+            setResError('Please sign in first to book a table.');
+            setResLoading(false);
+            setAuthOpen(true);
+            return;
+        }
+        try {
+            await makeReservation({
+                date: resForm.date,
+                time: resForm.time,
+                guests: Number(resForm.guests),
+                phone: resForm.phone || null,   // pass form phone for SMS
+                name: resForm.name,             // pass form name for notification
+            });
+            setResSuccess(true);
+            setResForm({ name: '', phone: '', time: '', guests: '2', date: '' });
+        } catch (err) { setResError(err.message); }
+        setResLoading(false);
+    };
 
-  const inputStyle = {
-    color: '#000',
-    background: '#ffffff',
-    border: '2px solid #999',
-    borderRadius: 6,
-    padding: '10px 14px',
-    width: '100%',
-    fontSize: '0.9rem',
-    fontFamily: 'inherit',
-    outline: 'none',
-    boxSizing: 'border-box',
-    WebkitTextFillColor: '#000',
-    opacity: 1,
-  };
-  const labelStyle = { display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: 4, color: '#fff' };
+    const inputStyle = {
+        color: '#000',
+        background: '#ffffff',
+        border: '2px solid #999',
+        borderRadius: 6,
+        padding: '10px 14px',
+        width: '100%',
+        fontSize: '0.9rem',
+        fontFamily: 'inherit',
+        outline: 'none',
+        boxSizing: 'border-box',
+        WebkitTextFillColor: '#000',
+        opacity: 1,
+    };
+    const labelStyle = { display: 'block', fontSize: '0.8rem', fontWeight: 700, marginBottom: 4, color: '#fff' };
 
     return (
-      <>
+        <>
             <div>
                 {/* preloader */}
                 <div className="preloader">
@@ -99,34 +100,34 @@ function Home() {
                 <div>
                     <div id="wrapper">
                     </div>
-<div className="top-bar-2" style={{ background: 'blue', zIndex: 999 }}>
-  <div className="container">
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        color: "white",
-        padding: "8px 0",
-        fontSize: "14px",
-      }}
-    >
-      <div style={{ display: "flex", gap: "25px" }}>
-        <span>
-          <i className="fa-solid fa-phone" /> +234 803 456 7890
-        </span>
+                    <div className="top-bar-2" style={{ background: 'blue', zIndex: 999 }}>
+                        <div className="container">
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                    color: "white",
+                                    padding: "8px 0",
+                                    fontSize: "14px",
+                                }}
+                            >
+                                <div style={{ display: "flex", gap: "25px" }}>
+                                    <span>
+                                        <i className="fa-solid fa-phone" /> +234 803 456 7890
+                                    </span>
 
-        <span>
-          <i className="fa-solid fa-envelope" /> foodiesbite123@gmail.com
-        </span>
-      </div>
+                                    <span>
+                                        <i className="fa-solid fa-envelope" /> foodiesbite123@gmail.com
+                                    </span>
+                                </div>
 
-      <div>
-        <i className="fa-solid fa-clock" /> Open Daily: 8AM - 11PM
-      </div>
-    </div>
-  </div>
-</div>                    {/* end Top bar */}
+                                <div>
+                                    <i className="fa-solid fa-clock" /> Open Daily: 8AM - 11PM
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    {/* end Top bar */}
                     {/* Header */}
                     <header id="header_main" className="header style-2" style={{ background: 'blue', color: 'white', zIndex: 999 }}>
                         <div className="container">
@@ -140,71 +141,71 @@ function Home() {
                                         <i className="fa fa-x close-icon" />
                                     </div>
                                 </div>
-<nav id="main-nav" className="main-nav">
-  <ul id="menu-primary-menu" className="menu">
+                                <nav id="main-nav" className="main-nav">
+                                    <ul id="menu-primary-menu" className="menu">
 
-    <li className="menu-item current-menu-item" >
-      <a href="/" style={{ color: 'rgb(234, 234, 234)', fontWeight: 700 }}>Home</a>
-    </li>
+                                        <li className="menu-item current-menu-item" >
+                                            <a href="/" style={{ color: 'rgb(234, 234, 234)', fontWeight: 700 }}>Home</a>
+                                        </li>
 
-    <li className="menu-item">
-      <a href="/Menu" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Menu</a>
-    </li>
+                                        <li className="menu-item">
+                                            <a href="/Menu" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Menu</a>
+                                        </li>
 
-    <li className="menu-item">
-      <a href="/Reservations" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Reservations</a>
-    </li>
+                                        <li className="menu-item">
+                                            <a href="/Reservations" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Reservations</a>
+                                        </li>
 
-    <li className="menu-item">
-      <a href="/About" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>About Us</a>
-    </li>
+                                        <li className="menu-item">
+                                            <a href="/About" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>About Us</a>
+                                        </li>
 
-    <li className="menu-item">
-      <a href="/Contact" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Contact</a>
-    </li>
+                                        <li className="menu-item">
+                                            <a href="/Contact" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Contact</a>
+                                        </li>
 
-    <li className="menu-item menu-item-has-children">
-      <a href="#" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>More</a>
-      <ul className="sub-menu">
-        <li className="menu-item">
-          <a href="/Faqs" style={{ color: 'black', fontWeight: 200 }}>FAQs</a>
-        </li>
+                                        <li className="menu-item menu-item-has-children">
+                                            <a href="#" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>More</a>
+                                            <ul className="sub-menu">
+                                                <li className="menu-item">
+                                                    <a href="/Faqs" style={{ color: 'black', fontWeight: 200 }}>FAQs</a>
+                                                </li>
 
-        <li className="menu-item">
-          <a href="/TrackOrder" style={{ color: 'black', fontWeight: 200 }}>Track Order</a>
-        </li>
+                                                <li className="menu-item">
+                                                    <a href="/TrackOrder" style={{ color: 'black', fontWeight: 200 }}>Track Order</a>
+                                                </li>
 
-        <li className="menu-item">
-          <a href="/Profile" style={{ color: 'black', fontWeight: 200 }}>My Account</a>
-        </li>
+                                                <li className="menu-item">
+                                                    <a href="/Profile" style={{ color: 'black', fontWeight: 200 }}>My Account</a>
+                                                </li>
 
-        <li className="menu-item">
-          <a href="/admin" style={{ color: 'black', fontWeight: 200 }}>Admin</a>
-        </li>
-      </ul>
-    </li>
+                                                <li className="menu-item">
+                                                    <a href="/admin" style={{ color: 'black', fontWeight: 200 }}>Admin</a>
+                                                </li>
+                                            </ul>
+                                        </li>
 
-  </ul>
-</nav>        
+                                    </ul>
+                                </nav>
 
-                        {/* Auth buttons */}
+                                {/* Auth buttons */}
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                  {user ? (
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                      <span style={{ fontWeight: 600, fontSize: '0.9rem', color: '#3B1F0A' }}>
-                                        👋 {user.name.split(' ')[0]}
-                                      </span>
-                                      <button onClick={handleLogout}
-                                        style={{ background: 'none', border: '1.5px solid #D47C2F', color: '#D47C2F', borderRadius: 50, padding: '6px 16px', fontWeight: 600, cursor: 'pointer', fontSize: '0.85rem' }}>
-                                        Sign Out
-                                      </button>
-                                    </div>
-                                  ) : (
-                                    <button onClick={() => setAuthOpen(true)}
-                                      style={{ background: '#D47C2F', color: 'white', border: 'none', borderRadius: 50, padding: '8px 20px', fontWeight: 700, cursor: 'pointer', fontSize: '0.9rem' }}>
-                                      Sign In
-                                    </button>
-                                  )}
+                                    {user ? (
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                            <span style={{ fontWeight: 600, fontSize: '0.9rem', color: '#3B1F0A' }}>
+                                                👋 {user.name.split(' ')[0]}
+                                            </span>
+                                            <button onClick={handleLogout}
+                                                style={{ background: 'none', border: '1.5px solid #D47C2F', color: '#D47C2F', borderRadius: 50, padding: '6px 16px', fontWeight: 600, cursor: 'pointer', fontSize: '0.85rem' }}>
+                                                Sign Out
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <button onClick={() => setAuthOpen(true)}
+                                            style={{ background: '#D47C2F', color: 'white', border: 'none', borderRadius: 50, padding: '8px 20px', fontWeight: 700, cursor: 'pointer', fontSize: '0.9rem' }}>
+                                            Sign In
+                                        </button>
+                                    )}
                                 </div>
                                 <div className="mobile-button"><span /></div>
                             </div>
@@ -260,7 +261,8 @@ function Home() {
                         </SwiperSlide>
 
                     </Swiper>
-<section className="opening">
+                    
+                    <section className="opening">
                         <div className="img"><img src="assets/images/section/opening.png" alt /></div>
                         <div className="container">
                             <div className="row">
@@ -295,93 +297,93 @@ function Home() {
                                         </div>
                                     </div>
                                 </div>
-<div className="col-lg-5 col-md-12" >
-  <div className="opening-book">
-    {resSuccess ? (
-      <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎉</div>
-        <h4 style={{ color: '#2D6A4F', marginBottom: '0.5rem' }}>Table Booked!</h4>
-        <p style={{ color: '#555', marginBottom: '1.25rem' }}>We will contact you shortly to confirm your reservation.</p>
-        <button className="tf-button style3" onClick={() => setResSuccess(false)}>Book Another Table</button>
-      </div>
-    ) : (
-      <form onSubmit={handleReservation}>
-        <h4 className="heading">book a table</h4>
-        <p>After booking we will call you to confirm. Please sign in first.</p>
+                                <div className="col-lg-5 col-md-12" >
+                                    <div className="opening-book">
+                                        {resSuccess ? (
+                                            <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+                                                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎉</div>
+                                                <h4 style={{ color: '#2D6A4F', marginBottom: '0.5rem' }}>Table Booked!</h4>
+                                                <p style={{ color: '#555', marginBottom: '1.25rem' }}>We will contact you shortly to confirm your reservation.</p>
+                                                <button className="tf-button style3" onClick={() => setResSuccess(false)}>Book Another Table</button>
+                                            </div>
+                                        ) : (
+                                            <form onSubmit={handleReservation}>
+                                                <h4 className="heading">book a table</h4>
+                                                <p>After booking we will call you to confirm. Please sign in first.</p>
 
-        {resError && (
-          <div style={{ background: '#FFF3F3', border: '1px solid #FFCDD2', color: '#c0392b', padding: '10px 14px', borderRadius: 8, fontSize: '0.85rem', marginBottom: '1rem' }}>
-            ⚠ {resError}
-            {resError.includes('sign in') && (
-              <button type="button" onClick={() => setAuthOpen(true)}
-                style={{ background: 'none', border: 'none', color: '#D47C2F', fontWeight: 700, cursor: 'pointer', textDecoration: 'underline', marginLeft: 6 }}>
-                Sign In Now
-              </button>
-            )}
-          </div>
-        )}
+                                                {resError && (
+                                                    <div style={{ background: '#FFF3F3', border: '1px solid #FFCDD2', color: '#c0392b', padding: '10px 14px', borderRadius: 8, fontSize: '0.85rem', marginBottom: '1rem' }}>
+                                                        ⚠ {resError}
+                                                        {resError.includes('sign in') && (
+                                                            <button type="button" onClick={() => setAuthOpen(true)}
+                                                                style={{ background: 'none', border: 'none', color: '#D47C2F', fontWeight: 700, cursor: 'pointer', textDecoration: 'underline', marginLeft: 6 }}>
+                                                                Sign In Now
+                                                            </button>
+                                                        )}
+                                                    </div>
+                                                )}
 
-        <div className="form-group">
-          <label style={labelStyle}>Your Name *</label>
-          <input type="text" className="form-control" placeholder="e.g. John Doe"
-            value={resForm.name} onChange={e => setResForm(p => ({ ...p, name: e.target.value }))}
-            style={inputStyle} required />
-        </div>
+                                                <div className="form-group">
+                                                    <label style={labelStyle}>Your Name *</label>
+                                                    <input type="text" className="form-control" placeholder="e.g. John Doe"
+                                                        value={resForm.name} onChange={e => setResForm(p => ({ ...p, name: e.target.value }))}
+                                                        style={inputStyle} required />
+                                                </div>
 
-        <div className="form-row">
-          <div className="form-group col-md-6">
-            <label style={labelStyle}>Phone Number *</label>
-            <input type="text" className="form-control" placeholder="e.g. +234 801 234 5678"
-              value={resForm.phone} onChange={e => setResForm(p => ({ ...p, phone: e.target.value }))}
-              style={inputStyle} required />
-          </div>
-          <div className="form-group col-md-6">
-            <label style={labelStyle}>🕐 Preferred Arrival Time *</label>
-            <input type="text" className="form-control" placeholder="e.g. 7:30 PM or 19:30"
-              value={resForm.time} onChange={e => setResForm(p => ({ ...p, time: e.target.value }))}
-              style={inputStyle} required />
-          </div>
-        </div>
+                                                <div className="form-row">
+                                                    <div className="form-group col-md-6">
+                                                        <label style={labelStyle}>Phone Number *</label>
+                                                        <input type="text" className="form-control" placeholder="e.g. +234 801 234 5678"
+                                                            value={resForm.phone} onChange={e => setResForm(p => ({ ...p, phone: e.target.value }))}
+                                                            style={inputStyle} required />
+                                                    </div>
+                                                    <div className="form-group col-md-6">
+                                                        <label style={labelStyle}>🕐 Preferred Arrival Time *</label>
+                                                        <input type="text" className="form-control" placeholder="e.g. 7:30 PM or 19:30"
+                                                            value={resForm.time} onChange={e => setResForm(p => ({ ...p, time: e.target.value }))}
+                                                            style={inputStyle} required />
+                                                    </div>
+                                                </div>
 
-        <div className="form-row">
-          <div className="form-group col-md-6">
-            <label style={labelStyle}>👥 Number of Guests *</label>
-            <select className="form-control" value={resForm.guests}
-              onChange={e => setResForm(p => ({ ...p, guests: e.target.value }))}
-              style={inputStyle}>
-              {[1,2,3,4,5,6,7,8,9,10].map(n => (
-                <option key={n} value={n}>{n} Guest{n > 1 ? 's' : ''}</option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group col-md-6">
-            <label style={labelStyle}>📅 Date *</label>
-            <input type="date" className="form-control"
-              value={resForm.date} onChange={e => setResForm(p => ({ ...p, date: e.target.value }))}
-              min={new Date().toISOString().split('T')[0]}
-              style={inputStyle} required />
-          </div>
-        </div>
+                                                <div className="form-row">
+                                                    <div className="form-group col-md-6">
+                                                        <label style={labelStyle}>👥 Number of Guests *</label>
+                                                        <select className="form-control" value={resForm.guests}
+                                                            onChange={e => setResForm(p => ({ ...p, guests: e.target.value }))}
+                                                            style={inputStyle}>
+                                                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
+                                                                <option key={n} value={n}>{n} Guest{n > 1 ? 's' : ''}</option>
+                                                            ))}
+                                                        </select>
+                                                    </div>
+                                                    <div className="form-group col-md-6">
+                                                        <label style={labelStyle}>📅 Date *</label>
+                                                        <input type="date" className="form-control"
+                                                            value={resForm.date} onChange={e => setResForm(p => ({ ...p, date: e.target.value }))}
+                                                            min={new Date().toISOString().split('T')[0]}
+                                                            style={inputStyle} required />
+                                                    </div>
+                                                </div>
 
-        {!isLoggedIn() && (
-          <p style={{ fontSize: '0.82rem', color: '#c0392b', marginBottom: '0.75rem' }}>
-            ⚠ You must{' '}
-            <button type="button" onClick={() => setAuthOpen(true)}
-              style={{ background: 'none', border: 'none', color: '#D47C2F', fontWeight: 700, cursor: 'pointer', textDecoration: 'underline', fontSize: '0.82rem' }}>
-              sign in
-            </button>{' '}
-            to complete this booking.
-          </p>
-        )}
+                                                {!isLoggedIn() && (
+                                                    <p style={{ fontSize: '0.82rem', color: '#c0392b', marginBottom: '0.75rem' }}>
+                                                        ⚠ You must{' '}
+                                                        <button type="button" onClick={() => setAuthOpen(true)}
+                                                            style={{ background: 'none', border: 'none', color: '#D47C2F', fontWeight: 700, cursor: 'pointer', textDecoration: 'underline', fontSize: '0.82rem' }}>
+                                                            sign in
+                                                        </button>{' '}
+                                                        to complete this booking.
+                                                    </p>
+                                                )}
 
-        <button type="submit" className="tf-button style3" disabled={resLoading}
-          style={{ opacity: resLoading ? 0.6 : 1 }}>
-          {resLoading ? 'Booking...' : 'Book a Table'}
-        </button>
-      </form>
-    )}
-  </div>
-</div>                            </div>
+                                                <button type="submit" className="tf-button style3" disabled={resLoading}
+                                                    style={{ opacity: resLoading ? 0.6 : 1 }}>
+                                                    {resLoading ? 'Booking...' : 'Book a Table'}
+                                                </button>
+                                            </form>
+                                        )}
+                                    </div>
+                                </div>                            </div>
                         </div>
                     </section>
                     <section className="chef-restaurant">
@@ -428,12 +430,12 @@ function Home() {
                             </div>
                         </div>
                     </section>
-                    
-                    
-                    <br /> <br /> <br /> <br /><br /> <br /> 
+
+
+                    <br /> <br /> <br /> <br /><br /> <br />
 
                     <FoodMenu />
-                    
+
                     <PromiseSection />
 
                     <section className="event">
@@ -644,65 +646,65 @@ function Home() {
                 </div>
             </div>
 
-      {/* ─── AUTH MODAL ─────────────────────────────────────────────────── */}
-      {authOpen && (
-        <div onClick={e => e.target === e.currentTarget && setAuthOpen(false)}
-          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', zIndex: 99999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
-          <div style={{ background: 'white', borderRadius: 16, padding: '2rem', width: 'min(420px,95vw)', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 20px 60px rgba(0,0,0,0.3)' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                {['login', 'register'].map(t => (
-                  <button key={t} onClick={() => { setAuthTab(t); setAuthError(''); }}
-                    style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 700, borderBottom: authTab === t ? '2px solid #D47C2F' : '2px solid transparent', paddingBottom: 4, color: authTab === t ? '#3B1F0A' : '#999', fontFamily: 'inherit' }}>
-                    {t === 'login' ? 'Sign In' : 'Sign Up'}
-                  </button>
-                ))}
-              </div>
-              <button onClick={() => setAuthOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.3rem', lineHeight: 1 }}>✕</button>
-            </div>
+            {/* ─── AUTH MODAL ─────────────────────────────────────────────────── */}
+            {authOpen && (
+                <div onClick={e => e.target === e.currentTarget && setAuthOpen(false)}
+                    style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', zIndex: 99999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+                    <div style={{ background: 'white', borderRadius: 16, padding: '2rem', width: 'min(420px,95vw)', maxHeight: '90vh', overflowY: 'auto', boxShadow: '0 20px 60px rgba(0,0,0,0.3)' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+                            <div style={{ display: 'flex', gap: '1rem' }}>
+                                {['login', 'register'].map(t => (
+                                    <button key={t} onClick={() => { setAuthTab(t); setAuthError(''); }}
+                                        style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 700, borderBottom: authTab === t ? '2px solid #D47C2F' : '2px solid transparent', paddingBottom: 4, color: authTab === t ? '#3B1F0A' : '#999', fontFamily: 'inherit' }}>
+                                        {t === 'login' ? 'Sign In' : 'Sign Up'}
+                                    </button>
+                                ))}
+                            </div>
+                            <button onClick={() => setAuthOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.3rem', lineHeight: 1 }}>✕</button>
+                        </div>
 
-            {authError && (
-              <div style={{ background: '#FFF3F3', border: '1px solid #FFCDD2', color: '#c0392b', padding: '10px 14px', borderRadius: 8, fontSize: '0.9rem', marginBottom: '1rem' }}>
-                ⚠ {authError}
-              </div>
-            )}
+                        {authError && (
+                            <div style={{ background: '#FFF3F3', border: '1px solid #FFCDD2', color: '#c0392b', padding: '10px 14px', borderRadius: 8, fontSize: '0.9rem', marginBottom: '1rem' }}>
+                                ⚠ {authError}
+                            </div>
+                        )}
 
-            <form onSubmit={handleAuth}>
-              {authTab === 'register' && (
-                <div style={{ marginBottom: '1rem' }}>
-                  <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Full Name</label>
-                  <input type="text" value={authForm.name} onChange={e => setAuthForm(p => ({ ...p, name: e.target.value }))} placeholder="John Doe" required
-                    style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #bbb', borderRadius: 8, fontSize: '0.95rem', color: '#000', background: '#fff', outline: 'none', fontFamily: 'inherit' }} />
+                        <form onSubmit={handleAuth}>
+                            {authTab === 'register' && (
+                                <div style={{ marginBottom: '1rem' }}>
+                                    <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Full Name</label>
+                                    <input type="text" value={authForm.name} onChange={e => setAuthForm(p => ({ ...p, name: e.target.value }))} placeholder="John Doe" required
+                                        style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #bbb', borderRadius: 8, fontSize: '0.95rem', color: '#000', background: '#fff', outline: 'none', fontFamily: 'inherit' }} />
+                                </div>
+                            )}
+                            <div style={{ marginBottom: '1rem' }}>
+                                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Email Address</label>
+                                <input type="email" value={authForm.email} onChange={e => setAuthForm(p => ({ ...p, email: e.target.value }))} placeholder="john@example.com" required
+                                    style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #bbb', borderRadius: 8, fontSize: '0.95rem', color: '#000', background: '#fff', outline: 'none', fontFamily: 'inherit' }} />
+                            </div>
+                            <div style={{ marginBottom: '1.25rem' }}>
+                                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Password</label>
+                                <input type="password" value={authForm.password} onChange={e => setAuthForm(p => ({ ...p, password: e.target.value }))} placeholder="••••••••" required
+                                    style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #bbb', borderRadius: 8, fontSize: '0.95rem', color: '#000', background: '#fff', outline: 'none', fontFamily: 'inherit' }} />
+                            </div>
+                            <button type="submit" className="tf-button style3" disabled={authLoading}
+                                style={{ width: '100%', textAlign: 'center', opacity: authLoading ? 0.6 : 1 }}>
+                                {authLoading ? 'Please wait...' : authTab === 'login' ? 'Sign In' : 'Create Account'}
+                            </button>
+                        </form>
+
+                        <p style={{ textAlign: 'center', marginTop: '1rem', fontSize: '0.85rem', color: '#888' }}>
+                            {authTab === 'login' ? "Don't have an account?" : 'Already have an account?'}
+                            <button onClick={() => { setAuthTab(authTab === 'login' ? 'register' : 'login'); setAuthError(''); }}
+                                style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#D47C2F', fontWeight: 700, marginLeft: 4, fontFamily: 'inherit' }}>
+                                {authTab === 'login' ? 'Sign Up' : 'Sign In'}
+                            </button>
+                        </p>
+                    </div>
                 </div>
-              )}
-              <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Email Address</label>
-                <input type="email" value={authForm.email} onChange={e => setAuthForm(p => ({ ...p, email: e.target.value }))} placeholder="john@example.com" required
-                  style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #bbb', borderRadius: 8, fontSize: '0.95rem', color: '#000', background: '#fff', outline: 'none', fontFamily: 'inherit' }} />
-              </div>
-              <div style={{ marginBottom: '1.25rem' }}>
-                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Password</label>
-                <input type="password" value={authForm.password} onChange={e => setAuthForm(p => ({ ...p, password: e.target.value }))} placeholder="••••••••" required
-                  style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #bbb', borderRadius: 8, fontSize: '0.95rem', color: '#000', background: '#fff', outline: 'none', fontFamily: 'inherit' }} />
-              </div>
-              <button type="submit" className="tf-button style3" disabled={authLoading}
-                style={{ width: '100%', textAlign: 'center', opacity: authLoading ? 0.6 : 1 }}>
-                {authLoading ? 'Please wait...' : authTab === 'login' ? 'Sign In' : 'Create Account'}
-              </button>
-            </form>
-
-            <p style={{ textAlign: 'center', marginTop: '1rem', fontSize: '0.85rem', color: '#888' }}>
-              {authTab === 'login' ? "Don't have an account?" : 'Already have an account?'}
-              <button onClick={() => { setAuthTab(authTab === 'login' ? 'register' : 'login'); setAuthError(''); }}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#D47C2F', fontWeight: 700, marginLeft: 4, fontFamily: 'inherit' }}>
-                {authTab === 'login' ? 'Sign Up' : 'Sign In'}
-              </button>
-            </p>
-          </div>
-        </div>
-      )}
-      </>
-     )        
+            )}
+        </>
+    )
 }
 
 export default Home

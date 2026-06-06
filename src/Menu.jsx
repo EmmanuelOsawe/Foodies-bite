@@ -192,67 +192,67 @@ function Menu() {
 
       {authOpen && (
         <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-        <div onClick={(e) => e.target === e.currentTarget && setAuthOpen(false)}
-          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
-          <div style={{ background: 'white', borderRadius: '16px', padding: '2rem', width: 'min(420px,100%)', maxHeight: '90vh', overflowY: 'auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                {['login', 'register'].map(t => (
-                  <button key={t} onClick={() => { setAuthTab(t); setAuthError(''); }}
-                    style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 700, borderBottom: authTab === t ? '2px solid #D47C2F' : '2px solid transparent', paddingBottom: 4, color: authTab === t ? '#3B1F0A' : '#999' }}>
-                    {t === 'login' ? 'Sign In' : 'Sign Up'}
-                  </button>
-                ))}
+          <div onClick={(e) => e.target === e.currentTarget && setAuthOpen(false)}
+            style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+            <div style={{ background: 'white', borderRadius: '16px', padding: '2rem', width: 'min(420px,100%)', maxHeight: '90vh', overflowY: 'auto' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  {['login', 'register'].map(t => (
+                    <button key={t} onClick={() => { setAuthTab(t); setAuthError(''); }}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.1rem', fontWeight: 700, borderBottom: authTab === t ? '2px solid #D47C2F' : '2px solid transparent', paddingBottom: 4, color: authTab === t ? '#3B1F0A' : '#999' }}>
+                      {t === 'login' ? 'Sign In' : 'Sign Up'}
+                    </button>
+                  ))}
+                </div>
+                <button onClick={() => setAuthOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem' }}>✕</button>
               </div>
-              <button onClick={() => setAuthOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '1.2rem' }}>✕</button>
-            </div>
-            {authError && <div style={{ background: '#FFF3F3', border: '1px solid #FFCDD2', color: '#c0392b', padding: '10px 14px', borderRadius: '8px', fontSize: '0.9rem', marginBottom: '1rem' }}>⚠ {authError}</div>}
-            <form onSubmit={handleAuth}>
-              {authTab === 'register' && (
+              {authError && <div style={{ background: '#FFF3F3', border: '1px solid #FFCDD2', color: '#c0392b', padding: '10px 14px', borderRadius: '8px', fontSize: '0.9rem', marginBottom: '1rem' }}>⚠ {authError}</div>}
+              <form onSubmit={handleAuth}>
+                {authTab === 'register' && (
+                  <div style={{ marginBottom: '1rem' }}>
+                    <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Full Name</label>
+                    <input className="form-control" value={authForm.name} onChange={e => setAuthForm(p => ({ ...p, name: e.target.value }))} placeholder="John Doe" required
+                      style={{ color: '#000', background: '#fff', border: '1.5px solid #ddd', borderRadius: 8, padding: '10px 14px', width: '100%', fontSize: '0.95rem' }} />
+                  </div>
+                )}
                 <div style={{ marginBottom: '1rem' }}>
-                  <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Full Name</label>
-                  <input className="form-control" value={authForm.name} onChange={e => setAuthForm(p => ({ ...p, name: e.target.value }))} placeholder="John Doe" required
+                  <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Email</label>
+                  <input className="form-control" type="email" value={authForm.email} onChange={e => setAuthForm(p => ({ ...p, email: e.target.value }))} placeholder="john@example.com" required
                     style={{ color: '#000', background: '#fff', border: '1.5px solid #ddd', borderRadius: 8, padding: '10px 14px', width: '100%', fontSize: '0.95rem' }} />
                 </div>
-              )}
-              <div style={{ marginBottom: '1rem' }}>
-                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Email</label>
-                <input className="form-control" type="email" value={authForm.email} onChange={e => setAuthForm(p => ({ ...p, email: e.target.value }))} placeholder="john@example.com" required
-                  style={{ color: '#000', background: '#fff', border: '1.5px solid #ddd', borderRadius: 8, padding: '10px 14px', width: '100%', fontSize: '0.95rem' }} />
-              </div>
-              <div style={{ marginBottom: '1.25rem' }}>
-                <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Password</label>
-                <input className="form-control" type="password" value={authForm.password} onChange={e => setAuthForm(p => ({ ...p, password: e.target.value }))} placeholder="••••••••" required
-                  style={{ color: '#000', background: '#fff', border: '1.5px solid #ddd', borderRadius: 8, padding: '10px 14px', width: '100%', fontSize: '0.95rem' }} />
-              </div>
-              {authTab === 'register' && (
                 <div style={{ marginBottom: '1.25rem' }}>
-                  <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Phone Number (for SMS notifications)</label>
-                  <input className="form-control" type="tel" value={authForm.phone || ''} onChange={e => setAuthForm(p => ({ ...p, phone: e.target.value }))} placeholder="+2348012345678"
+                  <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Password</label>
+                  <input className="form-control" type="password" value={authForm.password} onChange={e => setAuthForm(p => ({ ...p, password: e.target.value }))} placeholder="••••••••" required
                     style={{ color: '#000', background: '#fff', border: '1.5px solid #ddd', borderRadius: 8, padding: '10px 14px', width: '100%', fontSize: '0.95rem' }} />
-                  <p style={{ fontSize: '0.75rem', color: '#888', marginTop: 4 }}>Include country code e.g. +234 for Nigeria</p>
                 </div>
-              )}
-              <button type="submit" className="tf-button style3" disabled={authLoading} style={{ width: '100%', textAlign: 'center', opacity: authLoading ? 0.6 : 1 }}>
-                {authLoading ? 'Please wait...' : authTab === 'login' ? 'Sign In' : 'Create Account'}
-              </button>
-            </form>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '1.25rem 0' }}>
-              <div style={{ flex: 1, height: 1, background: '#eee' }} />
-              <span style={{ color: '#888', fontSize: '0.85rem', fontWeight: 500 }}>or</span>
-              <div style={{ flex: 1, height: 1, background: '#eee' }} />
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <GoogleLogin
-                onSuccess={handleGoogleSuccess}
-                onError={() => showToast('Google sign-in failed', 'error')}
-                text={authTab === 'login' ? 'signin_with' : 'signup_with'}
-                shape="rectangular"
-                width="360"
-              />
+                {authTab === 'register' && (
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <label style={{ display: 'block', fontWeight: 600, marginBottom: 6, fontSize: '0.85rem', color: '#3B1F0A' }}>Phone Number (for SMS notifications)</label>
+                    <input className="form-control" type="tel" value={authForm.phone || ''} onChange={e => setAuthForm(p => ({ ...p, phone: e.target.value }))} placeholder="+2348012345678"
+                      style={{ color: '#000', background: '#fff', border: '1.5px solid #ddd', borderRadius: 8, padding: '10px 14px', width: '100%', fontSize: '0.95rem' }} />
+                    <p style={{ fontSize: '0.75rem', color: '#888', marginTop: 4 }}>Include country code e.g. +234 for Nigeria</p>
+                  </div>
+                )}
+                <button type="submit" className="tf-button style3" disabled={authLoading} style={{ width: '100%', textAlign: 'center', opacity: authLoading ? 0.6 : 1 }}>
+                  {authLoading ? 'Please wait...' : authTab === 'login' ? 'Sign In' : 'Create Account'}
+                </button>
+              </form>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '1.25rem 0' }}>
+                <div style={{ flex: 1, height: 1, background: '#eee' }} />
+                <span style={{ color: '#888', fontSize: '0.85rem', fontWeight: 500 }}>or</span>
+                <div style={{ flex: 1, height: 1, background: '#eee' }} />
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <GoogleLogin
+                  onSuccess={handleGoogleSuccess}
+                  onError={() => showToast('Google sign-in failed', 'error')}
+                  text={authTab === 'login' ? 'signin_with' : 'signup_with'}
+                  shape="rectangular"
+                  width="360"
+                />
+              </div>
             </div>
           </div>
-        </div>
         </GoogleOAuthProvider>
       )}
 
@@ -348,30 +348,39 @@ function Menu() {
         <div className="clear-loading loading-effect-2"><span /></div>
       </div>
 
-      <div id="wrapper">
-        <div className="top-bar-2">
-          <div className="container">
-            <div className="row">
-              <div className="col-12">
-                <div className="top-header">
-                  <div className="contact-left">
-                    <div className="icon"><i className="fa fa-utensils" /></div>
-                    <div className="t"><p>Basilicofood123@gmail.com</p><p>+(406) 555-0120</p></div>
-                  </div>
-                  <div className="header__logo">
-                    <a href="/"><img src="assets/images/logo/logo-02.png" alt="logo" /></a>
-                  </div>
-                  <div className="contact-right">
-                    <div className="icon"><i className="fa-solid fa-location-dot" /></div>
-                    <div className="t"><p>4517 Washington Ave. Manchester,</p><p>Kentucky 39495, USA</p></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+         <div>
 
-        <header id="header_main" className="header style-2">
+                            <div className="top-bar-2" style={{ background: 'blue', zIndex: 999 }}>
+                        <div className="container">
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                    color: "white",
+                                    padding: "8px 0",
+                                    fontSize: "14px",
+                                }}
+                            >
+                                <div style={{ display: "flex", gap: "25px" }}>
+                                    <span>
+                                        <i className="fa-solid fa-phone" /> +234 803 456 7890
+                                    </span>
+
+                                    <span>
+                                        <i className="fa-solid fa-envelope" /> foodiesbite123@gmail.com
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <i className="fa-solid fa-clock" /> Open Daily: 8AM - 11PM
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    {/* end Top bar */}
+
+
+        <header id="header_main" className="header style-2" style={{ background: 'blue', color: 'white', zIndex: 999 }}>
           <div className="container">
             <div id="site-header-inner" className="site-header-inner">
               <div className="search-form">
@@ -381,13 +390,54 @@ function Menu() {
                   {search && <i className="fa fa-x close-icon" onClick={() => setSearch('')} style={{ cursor: 'pointer' }} />}
                 </div>
               </div>
+              
               <nav id="main-nav" className="main-nav">
                 <ul id="menu-primary-menu" className="menu">
-                  <li className="menu-item"><a href="/">Home</a></li>
-                  <li className="menu-item current-menu-item"><a href="/Menu">Menu</a></li>
-                  <li className="menu-item"><a href="/Contact">Contact</a></li>
+
+                  <li className="menu-item current-menu-item" >
+                    <a href="/" style={{ color: 'rgb(234, 234, 234)', fontWeight: 700 }}>Home</a>
+                  </li>
+
+                  <li className="menu-item">
+                    <a href="/Menu" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Menu</a>
+                  </li>
+
+                  <li className="menu-item">
+                    <a href="/Reservations" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Reservations</a>
+                  </li>
+
+                  <li className="menu-item">
+                    <a href="/About" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>About Us</a>
+                  </li>
+
+                  <li className="menu-item">
+                    <a href="/Contact" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Contact</a>
+                  </li>
+
+                  <li className="menu-item menu-item-has-children">
+                    <a href="#" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>More</a>
+                    <ul className="sub-menu">
+                      <li className="menu-item">
+                        <a href="/Faqs" style={{ color: 'black', fontWeight: 200 }}>FAQs</a>
+                      </li>
+
+                      <li className="menu-item">
+                        <a href="/TrackOrder" style={{ color: 'black', fontWeight: 200 }}>Track Order</a>
+                      </li>
+
+                      <li className="menu-item">
+                        <a href="/Profile" style={{ color: 'black', fontWeight: 200 }}>My Account</a>
+                      </li>
+
+                      <li className="menu-item">
+                        <a href="/admin" style={{ color: 'black', fontWeight: 200 }}>Admin</a>
+                      </li>
+                    </ul>
+                  </li>
+
                 </ul>
               </nav>
+
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                 <button onClick={() => setCartOpen(true)} style={{ background: '#D47C2F', color: 'white', border: 'none', borderRadius: 50, padding: '8px 18px', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.9rem' }}>
                   🛒 Cart {cartCount > 0 && <span style={{ background: '#c0392b', color: 'white', borderRadius: '50%', width: 20, height: 20, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 700 }}>{cartCount}</span>}
@@ -523,7 +573,7 @@ function Menu() {
                           <select className="form-control" value={resGuests}
                             onChange={e => setResGuests(e.target.value)}
                             style={{ color: '#000', background: '#fff', border: '1.5px solid #bbb', borderRadius: 8, padding: '10px 14px', width: '100%' }}>
-                            {[1,2,3,4,5,6,7,8,9,10].map(n => (
+                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
                               <option key={n} value={n}>{n} Guest{n > 1 ? 's' : ''}</option>
                             ))}
                           </select>
