@@ -3,6 +3,7 @@ import './App.css';
 import { makeReservation, loginUser, registerUser, saveAuth, clearAuth, getStoredUser, isLoggedIn } from './api';
 import { Swiper, SwiperSlide } from "swiper/react";
 import FoodMenu from "./components/FoodMenu";
+import PromiseSection from "./components/PromiseSection";
 
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 
@@ -430,49 +431,8 @@ function Home() {
 
                     <FoodMenu />
                     
-                    <div className="s-chef">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="chef-main">
-                                        <div className="chef-box">
-                                            <div className="img" data-aos-duration={1000} data-aos="fade-right">
-                                                <img src="assets/images/section/chef3.jpg" alt />
-                                            </div>
-                                            <div className="info">
-                                                <h5 data-aos-duration={1000} data-aos="fade-up">RAY SCHOENBAUM</h5>
-                                                <p data-aos-duration={1000} data-aos="fade-up">master chef</p>
-                                            </div>
-                                        </div>
-                                        <div className="block-text center style-2">
-                                            <img src="assets/images/icon/chef.png" alt data-aos-duration={1000} data-aos="fade-up" />
-                                            <p className="subtitle" data-aos-duration={1000} data-aos="fade-up">our chef</p>
-                                            <h3 className="title" data-aos-duration={1000} data-aos="fade-up">Our culinary philosophy </h3>
-                                            <p className="text" data-aos-duration={1000} data-aos="fade-up">Simple and balanced. Alexander Petillo brings together flavors and
-                                                specialties from Italy and beyond to create his own culinary world, full of
-                                                surprising artistry. <br />
-                                            </p>
-                                            <p data-aos-duration={1000} data-aos="fade-up">We see our customers as invited guests to a party, and we are the hosts. It’s our job
-                                                every day to make every important aspect of the customer experience a little bit
-                                                better.</p>
-                                            <a href="home_02.html#" className="tf-button style1">meet all chef</a>
-                                        </div>
-                                        <div className="chef-box">
-                                            <div className="img" data-aos-duration={1000} data-aos="fade-left">
-                                                <img src="assets/images/section/chef4.jpg" alt />
-                                            </div>
-                                            <div className="info">
-                                                <h5 data-aos-duration={1000} data-aos="fade-up">ALEX BEBIAK</h5>
-                                                <p data-aos-duration={1000} data-aos="fade-up">Assistant chef</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <PromiseSection />
 
-                    
                     <div className="s-couter">
                         <div className="container">
                             <div className="row">
