@@ -8,7 +8,7 @@ export default function PromiseSection() {
         {/* Left Image */}
         <div className="promise-image">
           <img
-            src="assets/images/food/ri.png"
+            src="assets/images/food/ricestew.png"
             alt="Fresh Nigerian Food"
           />
         </div>
@@ -63,7 +63,7 @@ export default function PromiseSection() {
         {/* Right Image */}
         <div className="promise-image">
           <img
-            src="assets/images/food/ebarmv.png"
+            src="assets/images/food/customers.png"
             alt="Foodies-Bite Dining"
           />
         </div>
