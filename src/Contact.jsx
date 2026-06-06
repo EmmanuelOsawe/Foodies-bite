@@ -97,11 +97,11 @@ function Contact() {
         </div>
       )}
 
-      <div className="top-bar-2">
-        <div className="container">
+      <div className="top-bar-2" style={{ background: 'blue', color: 'white', zIndex: 999 }}>
+        <div className="container" >
           <div className="row">
             <div className="col-12">
-              <div className="top-header">
+              <div className="top-header" >
                 <div className="contact-left">
                   <div className="icon"><i className="fa fa-utensils" /></div>
                   <div className="t"><p>Basilicofood123@gmail.com</p><p>+(406) 555-0120</p></div>
@@ -119,16 +119,56 @@ function Contact() {
         </div>
       </div>
 
-      <header id="header_main" className="header style-2">
+      <header id="header_main" className="header style-2" style={{ background: 'blue', color: 'white', zIndex: 999 }}>
         <div className="container">
+          
           <div id="site-header-inner" className="site-header-inner">
-            <nav id="main-nav" className="main-nav">
-              <ul id="menu-primary-menu" className="menu">
-                <li className="menu-item"><a href="/">Home</a></li>
-                <li className="menu-item"><a href="/Menu">Menu</a></li>
-                <li className="menu-item current-menu-item"><a href="/contact">Contact</a></li>
-              </ul>
-            </nav>
+                                <nav id="main-nav" className="main-nav">
+                                    <ul id="menu-primary-menu" className="menu">
+
+                                        <li className="menu-item current-menu-item" >
+                                            <a href="/" style={{ color: 'rgb(234, 234, 234)', fontWeight: 700 }}>Home</a>
+                                        </li>
+
+                                        <li className="menu-item">
+                                            <a href="/Menu" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Menu</a>
+                                        </li>
+
+                                        <li className="menu-item">
+                                            <a href="/Reservations" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Reservations</a>
+                                        </li>
+
+                                        <li className="menu-item">
+                                            <a href="/About" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>About Us</a>
+                                        </li>
+
+                                        <li className="menu-item">
+                                            <a href="/Contact" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Contact</a>
+                                        </li>
+
+                                        <li className="menu-item menu-item-has-children">
+                                            <a href="#" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>More</a>
+                                            <ul className="sub-menu">
+                                                <li className="menu-item">
+                                                    <a href="/Faqs" style={{ color: 'black', fontWeight: 200 }}>FAQs</a>
+                                                </li>
+
+                                                <li className="menu-item">
+                                                    <a href="/TrackOrder" style={{ color: 'black', fontWeight: 200 }}>Track Order</a>
+                                                </li>
+
+                                                <li className="menu-item">
+                                                    <a href="/Profile" style={{ color: 'black', fontWeight: 200 }}>My Account</a>
+                                                </li>
+
+                                                <li className="menu-item">
+                                                    <a href="/admin" style={{ color: 'black', fontWeight: 200 }}>Admin</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </nav>
             {user && (
               <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#D47C2F' }}>
                 👋 {user.name.split(' ')[0]}
