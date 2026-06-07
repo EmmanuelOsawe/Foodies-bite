@@ -530,7 +530,7 @@ function Home() {
                                                     </div>
                                                 </div>
                                                 <div className="ig-box">
-                                                    <img src="https://themesflat.co/html/restaurant/basilicohtml/assets/images/section/ig-3.jpg" alt />
+                                                    <img src="assets/images/food/salad.jpg" alt />
                                                     <div className="content">
                                                         <a href="home_02.html#" className="ig"><i className="fa-brands fa-instagram" /></a>
                                                     </div>
