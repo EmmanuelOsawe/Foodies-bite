@@ -261,7 +261,7 @@ function Home() {
                         </SwiperSlide>
 
                     </Swiper>
-                    
+
                     <section className="opening">
                         <div className="img"><img src="assets/images/section/opening.png" alt /></div>
                         <div className="container">
@@ -436,7 +436,11 @@ function Home() {
 
                     <FoodMenu />
 
+                    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
                     <PromiseSection />
+                     
+                     <br /><br /><br /><br />
 
                     <section className="event">
                         <div className="shape" />
@@ -511,7 +515,7 @@ function Home() {
                                     <div className="gallery-ig-main">
                                         <div className="col-img">
                                             <div className="ig-box">
-                                                <img src="assets/images/section/ig-1.jpg" alt />
+                                                <img src="assets/images/food/grilled.png" alt />
                                                 <div className="content">
                                                     <a href="home_02.html#" className="ig"><i className="fa-brands fa-instagram" /></a>
                                                 </div>
@@ -551,7 +555,7 @@ function Home() {
                                         </div>
                                     </div>
                                     <div className="center mt-50">
-                                        <a href="home_02.html#" className="tf-button style3">follow us instafram</a>
+                                        <a href="home_02.html#" className="tf-button style3">follow us Menu</a>
                                     </div>
                                 </div>
                             </div>
