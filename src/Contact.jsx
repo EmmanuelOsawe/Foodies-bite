@@ -97,7 +97,7 @@ function Contact() {
         </div>
       )}
 
-      <div className="top-bar-2" style={{ background: 'blue', color: 'white', zIndex: 999 }}>
+      <div className="top-bar-2" style={{ background: '#1F120A', color: 'white', zIndex: 999 }}>
         <div className="container" >
           <div className="row">
             <div className="col-12">
@@ -119,7 +119,7 @@ function Contact() {
         </div>
       </div>
 
-      <header id="header_main" className="header style-2" style={{ background: 'blue', color: 'white', zIndex: 999 }}>
+      <header id="header_main" className="header style-2" style={{ background: '#1F120A', color: 'white', zIndex: 999 }}>
         <div className="container">
           
           <div id="site-header-inner" className="site-header-inner">
