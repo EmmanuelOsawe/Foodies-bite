@@ -262,6 +262,8 @@ function Home() {
 
                     </Swiper>
 
+                    <br /><br /><br /><br /><br /><br />
+
                     <section className="opening">
                         <div className="img"><img src="assets/images/section/opening.png" alt /></div>
                         <div className="container">
