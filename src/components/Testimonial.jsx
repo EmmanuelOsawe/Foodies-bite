@@ -10,7 +10,7 @@ export default function Testimonial() {
 
       {/* LEFT IMAGE */}
       <div className="testimonials-image">
-        <img src="assets/images/section/testimonial.jpg" alt="Happy Customers" />
+        <img src="assets/images/section/customer.jfif" alt="Happy Customers" />
       </div>
 
       {/* RIGHT SWIPER */}
