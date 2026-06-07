@@ -494,7 +494,7 @@ function Home() {
                                             <p data-aos-duration={1000} data-aos="fade-up">There’s plenty to delight and surprise. Super-sized bronze and glass kinetic hanging
                                                 sculptures are designed to echo your flow as you drift and hover around the live
                                                 food stations and enjoy.</p>
-                                            <a href="home_02.html#" className="tf-button style3">read more
+                                            <a href="/About" className="tf-button style3">read more
                                             </a>
                                         </div>
                                     </div>
