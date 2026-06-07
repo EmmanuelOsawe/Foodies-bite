@@ -421,7 +421,7 @@ function Home() {
                                 <div className="swiper imagesSwiper">
                                     <div className="swiper-wrapper">
                                         <div className="swiper-slide">
-                                            <img src="assets/images/section/res02.jpg" alt />
+                                            <img src="assets/images/section/gp.jfif" alt />
                                         </div>
                                         <div className="swiper-slide">
                                             <img src="assets/images/section/res03.jpg" alt />

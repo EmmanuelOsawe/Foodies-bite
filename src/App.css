@@ -228,6 +228,222 @@
   }
 }
 
+/* ======================================
+   CHEF RESTAURANT - CINEMATIC FOOD STORY
+====================================== */
+
+.chef-restaurant {
+  position: relative;
+  padding: 160px 0;
+  background: #0f0a06;
+  overflow: hidden;
+}
+
+/* =========================
+   DARK CINEMATIC BACKGROUND GLOW
+========================= */
+
+.chef-restaurant::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(194,122,51,0.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,140,60,0.10), transparent 45%);
+  z-index: 1;
+}
+
+/* =========================
+   FLOATING SIDE IMAGES
+========================= */
+
+.chef-restaurant .item-left,
+.chef-restaurant .item-right {
+  position: absolute;
+  width: 340px;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 28px;
+
+  box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+  z-index: 2;
+
+  animation: floatImage 6s ease-in-out infinite;
+  transition: 0.4s ease;
+}
+
+/* LEFT IMAGE */
+.chef-restaurant .item-left {
+  left: 60px;
+  top: 120px;
+  transform: rotate(-4deg);
+  animation-delay: 0s;
+}
+
+/* RIGHT IMAGE */
+.chef-restaurant .item-right {
+  right: 60px;
+  bottom: 120px;
+  transform: rotate(4deg);
+  animation-delay: 2s;
+}
+
+/* FLOAT ANIMATION */
+@keyframes floatImage {
+  0% {
+    transform: translateY(0px) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(-4deg);
+  }
+}
+
+/* hover zoom (fast cinematic feel) */
+.chef-restaurant .item-left:hover,
+.chef-restaurant .item-right:hover {
+  transform: scale(1.08) rotate(0deg);
+  animation-play-state: paused;
+}
+
+/* =========================
+   TEXT SECTION (CENTER FOCUS)
+========================= */
+
+.menu-content {
+  position: relative;
+  z-index: 5;
+}
+
+.block-text {
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* SUBTITLE */
+.subtitle {
+  color: #e6c9a2;
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* TITLE */
+.title {
+  font-size: 52px;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+/* TEXT */
+.text {
+  color: rgba(255,255,255,0.75);
+  font-size: 16px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.tf-button.style3 {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 32px;
+  border-radius: 50px;
+
+  background: #c27a33;
+  color: #fff;
+
+  transition: 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.tf-button.style3:hover {
+  background: #9d5f23;
+  transform: translateY(-3px);
+}
+
+/* =========================
+   SWIPER GALLERY
+========================= */
+
+.imagesSwiper {
+  margin-top: 90px;
+  position: relative;
+  z-index: 5;
+}
+
+.imagesSwiper img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 20px;
+
+  filter: brightness(0.85) contrast(1.1);
+  transition: 0.4s ease;
+}
+
+.imagesSwiper img:hover {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 991px) {
+  .chef-restaurant {
+    padding: 100px 0;
+  }
+
+  .chef-restaurant .item-left,
+  .chef-restaurant .item-right {
+    display: none;
+  }
+
+  .title {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 30px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .imagesSwiper img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .text {
+    font-size: 13px;
+  }
+
+  .imagesSwiper img {
+    height: 180px;
+  }
+}
+
+
 .custom-input {
   width: 100%;
   background: #10263d !important;
