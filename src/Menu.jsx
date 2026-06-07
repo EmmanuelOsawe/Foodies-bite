@@ -440,11 +440,11 @@ function Menu() {
                 </button>
                 {user ? (
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ fontWeight: 600, fontSize: '0.9rem', color: '#3B1F0A' }}>{user.name.split(' ')[0]}</span>
+                    <span style={{ fontWeight: 600, fontSize: '0.9rem', color: 'orange' }}>{user.name.split(' ')[0]}</span>
                     <button onClick={handleLogout} style={{ background: 'none', border: '1px solid #ddd', borderRadius: 50, padding: '6px 14px', cursor: 'pointer', fontSize: '0.8rem', color: '#3B1F0A' }}>Sign Out</button>
                   </div>
                 ) : (
-                  <button onClick={() => setAuthOpen(true)} style={{ background: 'none', border: '2px solid #3B1F0A', borderRadius: 50, padding: '7px 18px', fontWeight: 700, cursor: 'pointer', fontSize: '0.85rem', color: '#3B1F0A' }}>Sign In</button>
+                  <button onClick={() => setAuthOpen(true)} style={{ background: 'none', border: '2px solid #3B1F0A', borderRadius: 50, padding: '7px 18px', fontWeight: 700, cursor: 'pointer', fontSize: '0.85rem', color: 'orange' }}>Sign In</button>
                 )}
               </div>
               <div className="mobile-button"><span /></div>

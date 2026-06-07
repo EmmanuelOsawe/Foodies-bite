@@ -97,27 +97,34 @@ function Contact() {
         </div>
       )}
 
-      <div className="top-bar-2" style={{ background: '#1F120A', color: 'white', zIndex: 999 }}>
-        <div className="container" >
-          <div className="row">
-            <div className="col-12">
-              <div className="top-header" >
-                <div className="contact-left">
-                  <div className="icon"><i className="fa fa-utensils" /></div>
-                  <div className="t"><p>Basilicofood123@gmail.com</p><p>+(406) 555-0120</p></div>
-                </div>
-                <div className="header__logo">
-                  <img src="/assets/images/logo/logo-02.png" alt="logo" />
-                </div>
-                <div className="contact-right">
-                  <div className="icon"><i className="fa-solid fa-location-dot" /></div>
-                  <div className="t"><p>4517 Washington Ave. Manchester</p><p>Kentucky 39495, USA</p></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                            <div className="top-bar-2" style={{ background: '#1F120A', zIndex: 999 }}>
+                        <div className="container">
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                    color: "white",
+                                    padding: "8px 0",
+                                    fontSize: "14px",
+                                }}
+                            >
+                                <div style={{ display: "flex", gap: "25px" }}>
+                                    <span>
+                                        <i className="fa-solid fa-phone" /> +234 803 456 7890
+                                    </span>
+
+                                    <span>
+                                        <i className="fa-solid fa-envelope" /> foodiesbite123@gmail.com
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <i className="fa-solid fa-clock" /> Open Daily: 8AM - 11PM
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    {/* end Top bar */}
 
       <header id="header_main" className="header style-2" style={{ background: '#1F120A', color: 'white', zIndex: 999 }}>
         <div className="container">
@@ -132,10 +139,6 @@ function Contact() {
 
                                         <li className="menu-item">
                                             <a href="/Menu" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Menu</a>
-                                        </li>
-
-                                        <li className="menu-item">
-                                            <a href="/Reservations" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Reservations</a>
                                         </li>
 
                                         <li className="menu-item">
