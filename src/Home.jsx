@@ -153,10 +153,6 @@ function Home() {
                                         </li>
 
                                         <li className="menu-item">
-                                            <a href="/Reservations" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>Reservations</a>
-                                        </li>
-
-                                        <li className="menu-item">
                                             <a href="/About" style={{ color: 'rgb(234, 234, 234)', fontWeight: 200 }}>About Us</a>
                                         </li>
 

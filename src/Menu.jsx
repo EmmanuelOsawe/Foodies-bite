@@ -350,7 +350,7 @@ function Menu() {
 
          <div>
 
-                            <div className="top-bar-2" style={{ background: 'blue', zIndex: 999 }}>
+                            <div className="top-bar-2" style={{ background: '#1F120A', zIndex: 999 }}>
                         <div className="container">
                             <div
                                 style={{
@@ -380,7 +380,7 @@ function Menu() {
                     </div>                    {/* end Top bar */}
 
 
-        <header id="header_main" className="header style-2" style={{ background: 'blue', color: 'white', zIndex: 999 }}>
+        <header id="header_main" className="header style-2" style={{ background: '#1F120A', color: 'white', zIndex: 999 }}>
           <div className="container">
             <div id="site-header-inner" className="site-header-inner">
               <div className="search-form">
