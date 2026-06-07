@@ -389,6 +389,8 @@ function Home() {
                         </div>
                     </section>
 
+                    <br /><br /><br /><br /><br /><br />
+                    <br /><br /><br /><br /><br /><br />
 
                     <section className="chef-restaurant">
                         <img className="item-right" src="assets/images/section/rice&crips.jpg" alt data-aos-duration={1000} data-aos="fade-left" />
