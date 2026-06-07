@@ -14,7 +14,7 @@ function About() {
         {/* LEFT IMAGE */}
         <div className="about-image">
           <img
-            src="assets/images/section/nigeria-food.jpg"
+            src="assets/images/section/original.jfif"
             alt="Foodies Bites Nigerian Food"
           />
         </div>
