@@ -515,7 +515,7 @@ function Home() {
                                     <div className="gallery-ig-main">
                                         <div className="col-img">
                                             <div className="ig-box">
-                                                <img src="assets/images/food/grilled.png" alt />
+                                                <img src="assets/images/food/pepper-stew.jpg" alt />
                                                 <div className="content">
                                                     <a href="home_02.html#" className="ig"><i className="fa-brands fa-instagram" /></a>
                                                 </div>
@@ -524,7 +524,7 @@ function Home() {
                                         <div className="col-img">
                                             <div className="top">
                                                 <div className="ig-box">
-                                                    <img src="assets/images/section/ig-2.jpg" alt />
+                                                    <img src="assets/images/food/moi.jpg" alt />
                                                     <div className="content">
                                                         <a href="home_02.html#" className="ig"><i className="fa-brands fa-instagram" /></a>
                                                     </div>
@@ -538,7 +538,7 @@ function Home() {
                                             </div>
                                             <div className="bottom">
                                                 <div className="ig-box">
-                                                    <img src="assets/images/section/ig-4.jpg" alt />
+                                                    <img src="assets/images/food/amala.jpg" alt />
                                                     <div className="content">
                                                         <a href="home_02.html#" className="ig"><i className="fa-brands fa-instagram" /></a>
                                                     </div>
@@ -547,7 +547,7 @@ function Home() {
                                         </div>
                                         <div className="col-img">
                                             <div className="ig-box">
-                                                <img src="assets/images/section/ig-5.jpg" alt />
+                                                <img src="assets/images/food/rs.jpg" alt />
                                                 <div className="content">
                                                     <a href="home_02.html#" className="ig"><i className="fa-brands fa-instagram" /></a>
                                                 </div>
