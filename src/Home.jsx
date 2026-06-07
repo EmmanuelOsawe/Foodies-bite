@@ -555,7 +555,7 @@ function Home() {
                                         </div>
                                     </div>
                                     <div className="center mt-50">
-                                        <a href="home_02.html#" className="tf-button style3">follow us Menu</a>
+                                        <a href="/Menu" className="tf-button style3">follow us Menu</a>
                                     </div>
                                 </div>
                             </div>
