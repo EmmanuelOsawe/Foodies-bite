@@ -1,7 +1,231 @@
+/* ===================================
+   FOODIES-BITES OPENING SECTION
+=================================== */
+
+.opening {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 0;
+  background: #faf8f5;
+}
+
+/* BACKGROUND IMAGE */
+
+.opening .img {
+  position: absolute;
+  right: -120px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.opening .img img {
+  width: 700px;
+  max-width: none;
+}
+
+/* CONTENT ABOVE IMAGE */
+
+.opening .container {
+  position: relative;
+  z-index: 5;
+}
+
+/* ==========================
+   LEFT SIDE
+========================== */
+
+.opening-content {
+  background: white;
+  padding: 50px;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+
+.opening-content .title {
+  font-size: 48px;
+  margin-bottom: 30px;
+  color: #2f1a0d;
+}
+
+.opening-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.opening-content li {
+  margin-bottom: 12px;
+  color: #555;
+  font-size: 15px;
+}
+
+.opening-content span {
+  font-weight: 700;
+  color: #2f1a0d;
+}
+
+/* ==========================
+   BOOKING CARD
+========================== */
+
 .opening-book {
-  background: blue;
+  position: relative;
+  z-index: 20;
+
+  background: #ffffff;
+  border-radius: 30px;
   padding: 40px;
-  border-radius: 10px;
+
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.15);
+
+  animation: floatBooking 4s ease-in-out infinite;
+}
+
+/* FLOAT EFFECT */
+
+@keyframes floatBooking {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.opening-book:hover {
+  animation-play-state: paused;
+}
+
+.opening-book .heading {
+  font-size: 34px;
+  margin-bottom: 15px;
+  color: #2f1a0d;
+}
+
+.opening-book p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* ==========================
+   FORM
+========================== */
+
+.opening-book .form-control {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  transition: all .3s ease;
+}
+
+.opening-book .form-control:focus {
+  border-color: #c27a33;
+  box-shadow: 0 0 0 3px rgba(194,122,51,.15);
+}
+
+/* BUTTON */
+
+.opening-book .tf-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 1200px) {
+
+  .opening-content .title {
+    font-size: 38px;
+  }
+
+  .opening .img img {
+    width: 550px;
+  }
+}
+
+@media (max-width: 991px) {
+
+  .opening {
+    padding: 80px 0;
+  }
+
+  .opening .img {
+    display: none;
+  }
+
+  .opening-content {
+    margin-bottom: 30px;
+    padding: 35px;
+  }
+
+  .opening-book {
+    padding: 35px;
+    animation: none;
+  }
+
+  .opening-content .title {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .opening-content {
+    padding: 25px;
+  }
+
+  .opening-book {
+    padding: 25px;
+  }
+
+  .opening-content .title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .opening-book .heading {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .opening-content li {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .opening {
+    padding: 60px 15px;
+  }
+
+  .opening-content {
+    padding: 20px;
+  }
+
+  .opening-book {
+    padding: 20px;
+  }
+
+  .opening-content .title {
+    font-size: 24px;
+  }
+
+  .opening-book .heading {
+    font-size: 22px;
+  }
 }
 
 .custom-input {
