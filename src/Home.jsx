@@ -129,7 +129,7 @@ function Home() {
                         </div>
                     </div>                    {/* end Top bar */}
                     {/* Header */}
-                    <header id="header_main" className="header style-2" style={{ background: '#1F120A', color: 'white', zIndex: 999 }}>
+                    <header id="header_main" className="header style-2" style={{ background: '#1F120A', hover:{color: 'yellow'}, color: 'white', zIndex: 999 }}>
                         <div className="container">
                             <div id="site-header-inner" className="site-header-inner">
                                 <div className="search-form">
@@ -145,7 +145,7 @@ function Home() {
                                     <ul id="menu-primary-menu" className="menu">
 
                                         <li className="menu-item current-menu-item" >
-                                            <a href="/" style={{ color: 'rgb(234, 234, 234)', fontWeight: 700 }}>Home</a>
+                                            <a href="/" style={{ color: 'rgb(234, 234, 234)', hover:{color: 'yellow'}, fontWeight: 700 }}>Home</a>
                                         </li>
 
                                         <li className="menu-item">
@@ -388,6 +388,7 @@ function Home() {
                                 </div>                            </div>
                         </div>
                     </section>
+
 
                     <section className="chef-restaurant">
                         <img className="item-right" src="assets/images/section/rice&crips.jpg" alt data-aos-duration={1000} data-aos="fade-left" />
