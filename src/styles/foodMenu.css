@@ -11,6 +11,7 @@
   justify-content: center;
   z-index: 9999;
   animation: fadeIn 0.3s ease;
+  color: black !important;
 }
 
 .lightbox img {
@@ -30,6 +31,32 @@
   font-size: 40px;
   color: white;
   cursor: pointer;
+}
+
+/* CATEGORY BUTTON DEFAULT STATE */
+.cat-btn {
+  padding: 10px 18px;
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  background: #fff;   /* white background */
+  color: #000;        /* BLACK TEXT DEFAULT */
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.3s ease;
+}
+
+/* HOVER STATE */
+.cat-btn:hover {
+  background: #D47C2F;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ACTIVE CATEGORY */
+.cat-btn.active {
+  background: #D47C2F;
+  color: #fff;
+  transform: scale(1.05);
 }
 
 /* ANIMATIONS */
